@@ -1,5 +1,5 @@
-<!--meta title="erreur 404 ! Nooooooon !" css="style/404.css"-->
-<div id="content">
+<!--meta title="404" css="style/404.css"-->
+<section id="content">
   <h1>404</h1>
-  <p>Ressource introuvable</p>
-</div>
+  <p>Fichier introuvable.</p>
+</section>

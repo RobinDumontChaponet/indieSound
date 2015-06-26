@@ -1,13 +1,10 @@
 #wrapper {
-	float: right;
-	width: 86%;
-	padding: 2em 2.875em;
+	margin: 0 auto;
+	padding: 0 2.875em;
 	height: auto;
 	min-height: 100%;
 	text-align: justify;
 	line-height: 1.7857;
-	/*padding-bottom: 3.125em;
-	margin-bottom: -3em;*/
 	max-width:1680px;
 
 	-webkit-hyphens: auto;

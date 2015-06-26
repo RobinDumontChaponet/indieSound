@@ -84,13 +84,6 @@ a, a:active, a:hover, a:visited {
 	animation-duration: .5s;
 }
 
-.troncat {
-	font-style: italic;
-	color: grey;
-	letter-spacing: 2px;
-	font-weight: 800;
-	padding-left: 4px;
-}
 .sad, .nc {
 	color: grey;
 }
