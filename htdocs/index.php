@@ -1,13 +1,15 @@
 <?php
 
+set_include_path(dirname(dirname(__FILE__)).'/includes');
+
 include_once('conf.inc.php');
 include_once('SPDO.class.php');
 
 session_start();
-if (!isset($_SESSION['stUser']) || $_SESSION['stUser']=='') {
+/*if (!isset($_SESSION['stUser']) || $_SESSION['stUser']=='') {
 	header ('Location: '.SELF.'connection.php');
 	exit();
-}
+}*/
 
 function get_include_contents($filename) {
 	if (is_file($filename)) {

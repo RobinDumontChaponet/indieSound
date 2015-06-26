@@ -8,7 +8,7 @@ define('CONTROLLERS_INC', ROOT_PATH.'/controllers/');
 define('MODELS_INC', ROOT_PATH.'/models/');
 define('VIEWS_INC', ROOT_PATH.'/views/');
 define('DATA_PATH', ROOT_PATH.'/data/');
-define('LOGS_PATH', ROOT_PATH.'/logs/');
+//define('LOGS_PATH', ROOT_PATH.'/logs/');
 
 define('SELF', dirname($_SERVER['PHP_SELF']).'/');
 
