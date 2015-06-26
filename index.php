@@ -24,12 +24,6 @@ function get_include_contents($filename) {
 if(empty($_GET['requ']))
 	$_GET['requ']='index';
 
-/*if(($page==null && is_file(CONTROLLERS_INC.$_GET['requ'].'.php')) or !isset($_SESSION['user_auth']['read']) || !$_SESSION['user_auth']['read']) {
-	header($_SERVER["SERVER_PROTOCOL"]." 403 Forbidden");
-	header("Status: 403 Forbidden");
-	$_SERVER['REDIRECT_STATUS'] = 403;
-	$inc = get_include_contents(CONTROLLERS_INC.'403.php');
-} else {*/
 if(is_file(CONTROLLERS_INC.$_GET['requ'].'.php'))
 	$inc = get_include_contents(CONTROLLERS_INC.$_GET['requ'].'.php');
 else {
