@@ -6,7 +6,7 @@ class GenreDAO {
     public static function getAll() {
         $list = array();
         try {
-            $req = SPDO::getInstance()-> query( "SELECT * FROM genre" );
+            $req = SPDO::getInstance()-> query( "SELECT * FROM `genre`" );
             while($res = $req->fetch()) {
                 $list[] = new Genre( $res[id], $res[name] );
             }
@@ -17,7 +17,7 @@ class GenreDAO {
 
     public static function getById($id) {
         try {
-            $req = SPDO::getInstance()-> query( "SELECT * FROM genre WHERE id = ?" );
+            $req = SPDO::getInstance()-> query( "SELECT * FROM `genre` WHERE `idGenre`=?" );
             $req->execute(array($id));
             if ($res = $req->fetch()){
 			 return new Genre( $res[id], $res[name] );
@@ -32,8 +32,8 @@ class GenreDAO {
     public static function create( &$obj ) {
         if (get_class( $obj ) == "Genre") {
             try {
-                $req = SPDO::getInstance()->prepare("INSERT INTO `genre`(`id`, `name`) VALUES (?,?) ");
-                $req-> execute( array( $obj->getId(), $obj->getName() ) );
+                $req = SPDO::getInstance()->prepare("INSERT INTO `genre`(`name`) VALUES (?) ");
+                $req-> execute( $obj->getName() ) );
                 $obj->setId( SPDO::getInstance()->LastInsertId() );
                 return $obj->getId();
             } catch (PDOException $e) {
@@ -47,7 +47,7 @@ class GenreDAO {
     public static function update( $obj ) {
         if (get_class( $obj ) == "Genre") {
             try {
-                $req = SPDO::getInstance()->prepare("UPDATE `genre` SET `name`=? WHERE `id`= ? ");
+                $req = SPDO::getInstance()->prepare("UPDATE `genre` SET `name`=? WHERE `idGenre`= ? ");
                 $req-> execute( array( $obj->getName(), $obj->getId() ) );
             } catch (PDOException $e) {
                 die( 'Error update genre '.$e->getMessage().'<br>' );
@@ -60,7 +60,7 @@ class GenreDAO {
     public static function delete( $obj ) {
         if (get_class( $obj ) == "Genre") {
             try {
-                $req = SPDO::getInstance()->prepare("DELETE FROM `genre` WHERE `id`= ? ");
+                $req = SPDO::getInstance()->prepare("DELETE FROM `genre` WHERE `idGenre`= ? ");
                 $req-> execute( array( $obj->getId() ) );
             } catch (PDOException $e) {
                 die( 'Error delete genre '.$e->getMessage().'<br>' );
