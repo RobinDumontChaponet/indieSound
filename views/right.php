@@ -17,19 +17,8 @@
             </form>
         </section>
     </section>
-    <section id="formCreate">
-        <form>
-            <input type="text" name="userProject" placeholder="Nom du projet"/>
-            <select name="permission" size="1">
-                <option>publique</option>
-                <option>prive</option>
-            </select>
-            <select name="genre" size="1">
-                <option></option>
-            </select>
-            <input type="textarea" name="description" placeholder="Description..."/>
-            <input type="submit" name="valideRegister" value="Confirmer"/>
-        </form>
+    <section id="right">
+        <p> bla bla legal bla bla securise bla bla </p>
     </section>
     <section id="footer">
         <p>Application developpe par la Team 2A au Hackathon musical</p>
