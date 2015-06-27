@@ -1,7 +1,6 @@
 <!--meta title="Connexion" css="style/connection.css"-->
 <div id="content">
 	<form method="post" action="">
-
 		<label>Nom d'utilisateur</label>
 		<input type="text" name="login" placeholder="Nom d'utilisateur"/>
 		<label>Mot de passe</label>

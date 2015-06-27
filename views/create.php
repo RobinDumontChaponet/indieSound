@@ -1,18 +1,14 @@
-<!--meta title="create" css="" js=""-->
+<!--meta title="Nouveau morceau"-->
 <div id="content">
-    <section id="formCreate">
-        <form>
-            <input type="text" name="userProject" placeholder="Nom du projet"/>
-            <select name="genre" size="1">
-                <?php
-                $genre[]=genreDAO::getAll();
-                foreach ($genre as $genre){
-                    echo('<option>' . $genre->getName() . '</option>');
-                }
-                ?>
-            </select>
-            <input type="textarea" name="description" placeholder="Description..."/>
-            <input type="submit" name="valideRegister" value="Confirmer"/>
-        </form>
-    </section>
+	<form>
+		<input type="text" name="userProject" placeholder="Nom du projet"/>
+		<select name="genre">
+			<?php
+			foreach ($genres as $genre)
+				echo('<option>' .$genre->getName(). '</option>');
+			?>
+		</select>
+		<textarea name="description" placeholder="Description..."></textarea>
+		<input type="submit" name="valideRegister" value="Ajouter"/>
+	</form>
 </div>
