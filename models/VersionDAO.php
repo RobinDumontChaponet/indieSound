@@ -1,53 +1,45 @@
 <?php
-
-include_once 'SPDO.class.php';
 include_once MODELS_INC.'Version.class.php';
-
+include_once MODELS_INC.'HasParticipatedDAO.php';
 class VersionDAO {
-
 	public static function create (&$version) {
 		if (get_class( $version ) == "Version") {
-			try {;
+			try {
 				$connect=SPDO::getInstance();
-				$statement = $connect->prepare('INSERT INTO version([...],name,duration, description, [...]) VALUES (?,?, ?, ?, ?)');
-				$statement->bindParam(1, $[...]);
-				$name = $version->getName();
-				$views=0;
-				$statement->bindParam(2, $name);
-				$statement->bindParam(3,$duration);
-				$description = $version->getDescription();
-				$statement->bindParam(4, $description);
-				$statement->bindParam(5, $[...]);
+				$statement = $connect->prepare('INSERT INTO version(name,views,duration, description, project) VALUES (?,?, ?, ?)');
+				$statement->bindParam(1, $version->getName());
+				$statement->bindParam(2,$version->getViews());
+				$statement->bindParam(3,$version->getDuration());
+				$statement->bindParam(4, $version->getDescription());
+				$statement->bindParam(5, $version->getProjectId());
 				$statement->execute();
-
+//////
 				return $connect->lastInsertId();
 			} catch (PDOException $e) {
 				die('Error create comment!: ' . $e->getMessage() . '<br/>');
 			}
 		}
 	}
-
 	public static function update ($version) {
-		if (get_class( $version) == "Version") {
+		if (get_class( $version ) == "Version") {
 			try {
 				$connect=SPDO::getInstance();
 				$statement = $connect->prepare('UPDATE version SET description=? WHERE id=?');
 				$description = $version->getDescription();
 				$statement->bindParam(1, $description);
 				$statement->execute();
-
+//////
 				return $connect->lastInsertId();
 			} catch (PDOException $e) {
 				die('Error update user!: ' . $e->getMessage() . '<br/>');
 			}
 		}
 	}
-
 	public static function delete ($version) {
-		if (get_class( $version) == "Version") {
+		if (get_class( $version ) == "Version") {
 			try {
 				$connect=SPDO::getInstance();
-				$statement = $connect->prepare('DELETE FROM version WHERE id=?');
+				$statement = $connect->prepare('DELETE FROM version WHERE idVersion=?');
 				$id = $version->getId();
 				$statement->bindParam(1, $id);
 				$statement->execute();
@@ -56,50 +48,49 @@ class VersionDAO {
 			}
 		}
 	}
-
 	public static function getAll () {
-		if (get_class( $version ) == "Version") {
-			$version = array();
-			try {
-				$connect=SPDO::getInstance();
-				$statement = $connect->prepare('SELECT * FROM version');
-
-				$statement->execute();
-
-				while ($rs = $statement->fetch(PDO::FETCH_OBJ))
-					$version[]=new Version($rs->id, $rs->users[], $rs->name,$rs->views, $rs->description, $rs->commentaires[]);
-			} catch (PDOException $e) {
-				die('Error!: ' . $e->getMessage() . '<br/>');
+		try {
+			$connect = SPDO::getInstance();
+			$statement = $connect->prepare('SELECT * FROM version');
+			$statement->execute();
+			while ($rs = $statement->fetch(PDO::FETCH_OBJ)) {
+				$users   = HasParticipatedDAO::getByVersionId($rs->idVersion);
+				$version = new Version($rs->idVersion, $users, $rs->name,$rs->views,$rs->duration, $rs->description, null);
+				$version->setComments(CommentDAO::getByVersion($version));
+				$versions[] = $version;
 			}
-			return $version;
+		} catch (PDOException $e) {
+			die('Error!: ' . $e->getMessage() . '<br/>');
 		}
+		return $versions;
 	}
-
 	public static function getById ($id) {
-			try {
-				$connect=SPDO::getInstance();
-				$statement = $connect->prepare('SELECT * FROM version where id=?');
-				$statement->bindParam(1, $id);
-				$statement->execute();
-
-				if($rs = $statement->fetch(PDO::FETCH_OBJ))
-					$version=new Version($rs->id, $rs->users[], $rs->name,$rs->views,$rs->duration, $rs->description, $rs->commentaires[]);
-			} catch (PDOException $e) {
-				die('Error!: ' . $e->getMessage() . '<br/>');
+		try {
+			$connect=SPDO::getInstance();
+			$statement = $connect->prepare('SELECT * FROM version where idVersion=?');
+			$statement->bindParam(1, $id);
+			$statement->execute();
+			if($rs = $statement->fetch(PDO::FETCH_OBJ)) {
+				$users   = HasParticipatedDAO::getByVersionId($rs->idVersion);
+				$version = new Version($rs->idVersion, $users, $rs->name,$rs->views,$rs->duration, $rs->description, null);
+				$version->setComments(CommentDAO::getByVersion($version));
 			}
-			return $version;
+		} catch (PDOException $e) {
+			die('Error!: ' . $e->getMessage() . '<br/>');
 		}
-	public static function getByNbViews(){
-			try{
-				$connect=SPDO::getInstance();
-				$statement=$connect->prepare('SELECT * FROM version ORDER BY views DESC MAX 20');
-				$statement->execute();
-				if($rs=$statement->fetch(PDO::FETCH_OBJ))
-					$version=new Version($rs->id, $rs->users[], $rs->name,$rs->views,$rs->duration, $rs->description, $rs->commentaires[]);
-			} catch (PDOException $e){
-				die('Error!: '.$e->getMessage().'<br/>');
-			}
-			return $version;
-		}
+		return $version;
 	}
+	public static function getByNbViews(){
+		try{
+			$connect=SPDO::getInstance();
+			$statement=$connect->prepare('SELECT * FROM version ORDER BY views DESC MAX 20');
+			$statement->execute();
+			if($rs=$statement->fetch(PDO::FETCH_OBJ))
+				$version=new Version($rs->id, $rs->users[], $rs->name,$rs->views,$rs->duration, $rs->description, $rs->commentaires[]);
+		} catch (PDOException $e){
+			die('Error!: '.$e->getMessage().'<br/>');
+		}
+		return $version;
+	}
+}
 ?>
