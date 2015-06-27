@@ -10,7 +10,7 @@ class SPDO {
 
 	const DEFAULT_SQL_HOST = 'localhost';
 
-	const DEFAULT_SQL_PASS = 'root';
+	const DEFAULT_SQL_PASS = '';
 
 	const DEFAULT_SQL_DTB = 'soundtree';
 

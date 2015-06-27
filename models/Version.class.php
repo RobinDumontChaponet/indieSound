@@ -9,10 +9,11 @@ class Version {
 	private $description;
 	private $commentaires;
 
-	public function __construct ($id='', $users='', $name='',$views='',$duration='', $description='', $commentaires='') {
+	public function __construct ($id='', $users='', $name='',$project='',$views='',$duration='', $description='', $commentaires='') {
 		$this->id=$id;
 		$this->users=$users;
 		$this->name=$name;
+		$this->project=$project;
 		$this->views=$views;
 		$this->duration=$duration;
 		$this->description=$description;

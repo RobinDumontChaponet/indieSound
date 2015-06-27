@@ -50,6 +50,7 @@ class VersionDAO {
 		}
 	}
 	public static function getAll () {
+		$versions=array();
 		try {
 			$connect = SPDO::getInstance();
 			$statement = $connect->prepare('SELECT * FROM version');
@@ -82,17 +83,19 @@ class VersionDAO {
 		return $version;
 	}
 	public static function getByNbViews(){
-		$version=null;
+		$versions=array();
 		try{
-			$connect=SPDO::getInstance();
-			$statement=$connect->prepare('SELECT * FROM version ORDER BY views DESC LIMIT 20');
-			$statement->execute();
-			if($rs=$statement->fetch(PDO::FETCH_OBJ))
-				$version=new Version($rs->idVersion,$rs->project,$rs->name ,$rs->views,$rs->duration,$rs->description);
+			$req=SPDO::getInstance()->query('SELECT * FROM `version` ORDER BY views DESC LIMIT 20');
+			$req->execute();
+			while($rs = $req->fetch()){
+					$version = new Version($rs->idVersion,$rs->users, $rs->name,$rs->project, $rs->views, $rs->duration, $rs->description,$rs->commentaires);
+					var_dump($version);
+					$versions[] = $version;
+				}
 		} catch (PDOException $e){
 			die('Error!: '.$e->getMessage().'<br/>');
 		}
-		return $version;
+		return $versions;
 	}
 }
 ?>
