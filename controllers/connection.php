@@ -14,7 +14,7 @@ if (isset($_SESSION['stUser']) && $_SESSION['stUser']!='')
 elseif (isset($_POST['login']) && isset($_POST['password']) && !$bot) {
 	if ($_POST['login']=='' || $_POST['password']=='') $badinput=true;
 	else {
-		include(MODELS_INC.'UserDAO.class.php');
+		require(MODELS_INC.'UserDAO.class.php');
 		include('validate.transit.inc.php');
 		include_once('passwordHash.inc.php');
 

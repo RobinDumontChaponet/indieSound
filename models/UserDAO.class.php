@@ -4,13 +4,13 @@ require_once("User.class.php");
 class UserDAO {
 
 	public static function create (&$user) {
-		if (get_class( $user ) == "User") {
+		if (get_class( $obj ) == "User") {
 			try {
 				$connect=SPDO::getInstance();
 				$statement = $connect->prepare('INSERT INTO user(login, password, mail, lastName, firstName) VALUES (?, ?, ?, ?, ?)');
 				$log = $user->getLogin();
 
-				if (!UserDAO::isExistLogin($log)){
+				if (!isExistLogin($log)){
 					$statement->bindParam(1, $log);
 					$pwd = $user->getPassword();
 					$statement->bindParam(2, $pwd);
@@ -106,7 +106,7 @@ class UserDAO {
 				$statement->execute();
 
 				if($rs = $statement->fetch(PDO::FETCH_OBJ))
-					$user=new User($rs->id, $rs->login, $rs->password, $rs->mail, $rs->lastName, $rs->firstName );
+					$user=new User($rs->idUser, $rs->login, $rs->password, $rs->mail, $rs->lastName, $rs->firstName );
 				} catch (PDOException $e) {
 				die('Error! getByLogin:' . $e->getMessage() . '<br/>');
 			}
@@ -114,6 +114,7 @@ class UserDAO {
 	}
 
 	public static function isExistLogin ($login) {
+			if (get_class( $obj ) == "User") {
 			$user = null;
 
 			try {
@@ -130,6 +131,7 @@ class UserDAO {
 					}
 				} catch (PDOException $e) {
 				die('Error! isExistLogin:' . $e->getMessage() . '<br/>');
+			}
 		}
 	}
 }

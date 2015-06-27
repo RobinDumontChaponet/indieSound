@@ -61,10 +61,4 @@ class User {
 		return 'User [ id : '.$this->id.'; login : '.$this->login.'; mail : '.$this->mail.'; lastName : '.$this->lastName.'; firstName : '.$this->firstName.' ]';
 	}
 }
-
-function randomPassword( $length = 8 ) {
-	$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-=+;:?";
-	$password = substr( str_shuffle( $chars ), 0, $length );
-	return $password;
-}
 ?>

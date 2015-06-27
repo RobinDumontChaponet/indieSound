@@ -87,7 +87,7 @@ function valideSexe($sexe){
 
 }
 
-function validePwd($password){
+function validePassword($password){
 	if (empty($password))
     	return false;
 	else if (strlen($password)< 4)
