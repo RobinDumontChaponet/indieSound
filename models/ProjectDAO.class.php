@@ -9,7 +9,6 @@ class ProjectDAO {
 			foreach ($lst as $proj) {
 				$lstObjet[]=new Project($proj['idProjet'], $proj['name'], $proj['owner'], $proj['root'],$proj['description'], $proj['description'], $proj['parent'], $proj['locked']);
 			}
-			var_dump($lstObjet);
 			return $lstObjet;
 		} catch(PDOException $e) {
 			die('error get all project '.$e->getMessage().'<br>');
