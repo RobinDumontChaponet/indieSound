@@ -1,4 +1,6 @@
 <?php
+	
+include_once MODELS_INC.'HasParticipated.class.php';
 
 class HasParticipatedDAO {
 

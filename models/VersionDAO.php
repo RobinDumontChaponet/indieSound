@@ -1,9 +1,11 @@
 <?php
 
-include_once 'SPDO.class.php';
 include_once MODELS_INC.'Version.class.php';
+include_once MODELS_INC.'HasParticipatedDAO.php';
 
 class VersionDAO {
+
+//$id='', $users='', $name='', $description='', $commentaires='', $projectId=''
 
 	public static function create (&$version) {
 		if (get_class( $obj ) == "Version") {
@@ -46,7 +48,7 @@ class VersionDAO {
 		if (get_class( $obj ) == "Version") {
 			try {
 				$connect=SPDO::getInstance();
-				$statement = $connect->prepare('DELETE FROM version WHERE id=?');
+				$statement = $connect->prepare('DELETE FROM version WHERE idVersion=?');
 				$id = $comment->getId();
 				$statement->bindParam(1, $id);
 				$statement->execute();
@@ -58,33 +60,47 @@ class VersionDAO {
 
 	public static function getAll () {
 		if (get_class( $obj ) == "Version") {
-			$version = array();
+			$versions = array();
+
 			try {
-				$connect=SPDO::getInstance();
+				$connect = SPDO::getInstance();
 				$statement = $connect->prepare('SELECT * FROM version');
 
 				$statement->execute();
 
-				while ($rs = $statement->fetch(PDO::FETCH_OBJ))
-					$version[]=new Version($rs->id, $rs->users[], $rs->name, $rs->description, $rs->commentaires[]);
+				while ($rs = $statement->fetch(PDO::FETCH_OBJ)) {
+					$users   = HasParticipatedDAO::getByVersionId($rs->idVersion);
+
+					$version = new Version($rs->idVersion, $users, $rs->name, $rs->description, null);
+
+					$version->setComments(CommentDAO::getByVersion($version));
+
+					$versions[] = $version;
+				}
 			} catch (PDOException $e) {
 				die('Error!: ' . $e->getMessage() . '<br/>');
 			}
-			return $version;
+			return $versions;
 		}
 	}
 
 	public static function getById ($id) {
 		if (get_class( $obj ) == "Version") {
 			$version = null;
+
 			try {
 				$connect=SPDO::getInstance();
-				$statement = $connect->prepare('SELECT * FROM version where id=?');
+				$statement = $connect->prepare('SELECT * FROM version where idVersion=?');
 				$statement->bindParam(1, $id);
 				$statement->execute();
 
-				if($rs = $statement->fetch(PDO::FETCH_OBJ))
-					$version=new Version($rs->id, $rs->users[], $rs->name, $rs->description, $rs->commentaires[]);
+				if($rs = $statement->fetch(PDO::FETCH_OBJ)) {
+					$users   = HasParticipatedDAO::getByVersionId($rs->idVersion);
+
+					$version = new Version($rs->idVersion, $users, $rs->name, $rs->description, null);
+
+					$version->setComments(CommentDAO::getByVersion($version));
+				}
 			} catch (PDOException $e) {
 				die('Error!: ' . $e->getMessage() . '<br/>');
 			}
