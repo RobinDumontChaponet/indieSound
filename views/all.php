@@ -1,19 +1,10 @@
-<!--meta title="all" css="style/project.css"-->
-<?php
-include_once MODELS_INC . 'ProjectDAO.class.php';
-?>
+<!--meta title="Tous les morceaux"-->
 <div id="content">
-    <section id="lis">
-        <ul>
-            <?php
-            $list=ProjectDAO::getAll();
-
-            foreach($list as $project){
-                echo('
-                        <li>' . $project->getName() . ' '.' '.$project->getOwner() .'</li>
-                ');
-            }
-            ?>
-        </ul>
-    </section>
+	<ul>
+	<?php
+	foreach($projects as $project) {
+		echo '<li><p>'.$project->getName().'<span>'.$project->getOwner()->getLogin().'</span></p></li>';
+	}
+	?>
+	</ul>
 </div>

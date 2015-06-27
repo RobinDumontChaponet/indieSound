@@ -1,4 +1,5 @@
 <?php
+
 require_once("User.class.php");
 
 class UserDAO {
@@ -71,7 +72,7 @@ class UserDAO {
 			$statement->execute();
 
 			while ($rs = $statement->fetch(PDO::FETCH_OBJ))
-				$user[]=new User($rs->id, $rs->login, $rs->password, $rs->mail, $rs->lastName, $rs->firstName );
+				$user[]=new User($rs->id, $rs->login, $rs->password, $rs->mail, $rs->lastName, $rs->firstName);
 		} catch (PDOException $e) {
 			die('Error! getAll:' . $e->getMessage() . '<br/>');
 		}
@@ -82,12 +83,12 @@ class UserDAO {
 			$user = null;
 			try {
 				$connect=SPDO::getInstance();
-				$statement = $connect->prepare('SELECT * FROM user where id=?');
+				$statement = $connect->prepare('SELECT * FROM user where idUser=?');
 				$statement->bindParam(1, $id);
 				$statement->execute();
 
 				if($rs = $statement->fetch(PDO::FETCH_OBJ))
-					$user=new User($rs->id, $rs->login, $rs->password, $rs->mail, $rs->lastName, $rs->firstName );
+					$user=new User($rs->idUser, $rs->login, $rs->password, $rs->mail, $rs->lastName, $rs->firstName);
 			} catch (PDOException $e) {
 				die('Error! getById:' . $e->getMessage() . '<br/>');
 			}
@@ -104,7 +105,7 @@ class UserDAO {
 				$statement->execute();
 
 				if($rs = $statement->fetch(PDO::FETCH_OBJ))
-					$user=new User($rs->idUser, $rs->login, $rs->password, $rs->mail, $rs->lastName, $rs->firstName );
+					$user=new User($rs->idUser, $rs->login, $rs->password, $rs->mail, $rs->lastName, $rs->firstName);
 				} catch (PDOException $e) {
 				die('Error! getByLogin:' . $e->getMessage() . '<br/>');
 			}

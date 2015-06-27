@@ -6,7 +6,6 @@ class Project {
 	private $name; 
 	private $genre;
 	private $owner;
-	private $root;
 	private $version;
 	private $description;
 	private $parent;
@@ -14,12 +13,11 @@ class Project {
 
 
 	//-------------------CONSTRUCTORS-------------------
-	public function __construct($id, $name, $genre, $owner, $root, $description, $parent, $locked) {
+	public function __construct($id, $name, $genre, $owner, $description, $parent, $locked) {
 		$this->setId($id);
 		$this->setName($name);
 		$this->setGenre($genre);
 		$this->setOwner($owner);
-		$this->setRoot($root);
 		$this->setDescription($description);
 		$this->setParent($parent);
 		$this->setLock($locked);
@@ -42,9 +40,6 @@ class Project {
 		return $this->owner;
 	}
 
-	public function getRoot() {
-		return $this->root;
-	}
 	public function getDescription() {
 		return $this->parent;
 	}
@@ -58,7 +53,6 @@ class Project {
 	}
 
 
-
 	//-------------------SETTERS-------------------
 	public function setId($id) {
 		if(is_numeric($id) && $id >= 0)
@@ -67,22 +61,19 @@ class Project {
 			throw new Exception("Id personne invalide : ".$id);
 	}
 	public function setName($name) {
-		$this->nom = trim($name);
+		$this->name = trim($name);
 	}
 	public function setGenre($genre) {
-		$this->genre = trim($genre);
+		$this->genre = $genre;
 	}
 	public function setOwner($owner){
-		$this->owner = trim($owner);
-	}
-	public function setRoot($root){
-		$this->root = trim($root);
+		$this->owner = $owner;
 	}
 	public function setDescription($description) {
-		$this->version = trim ($description);
+		$this->version = trim($description);
 	}
 	public function setParent($parent) {
-		$this->parent = trim($parent);
+		$this->parent = $parent;
 	}
 	public function setLock($lock) {
 		$this->lock = $lock;
@@ -92,7 +83,7 @@ class Project {
 	public function __toString() {
 		return "Id : ".$this->id." Nom du projet : ".$this->name." Genre : "
 			.$this->genre." Proprietaire : ".$this->owner." Description : "
-			.$this->description." Projet Parent : ".$this->parent." Projet privé : ".$this->lock." Droits : ".$this->rights;
+			.$this->description." Projet Parent : ".$this->parent." Projet privé : ".$this->lock;
 	}
 }
 ?>

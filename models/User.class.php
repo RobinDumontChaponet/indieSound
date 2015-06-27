@@ -37,7 +37,6 @@ class User {
 	}
 
 
-
 	public function setId ($id) {
 		$this->id=$id;
 	}
