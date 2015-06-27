@@ -1,7 +1,6 @@
 <?php
 
-include_once 'SPDO.class.php';
-include_once MODELS_INC.'Comment.class.php';
+require_once("Comment.class.php");
 
 class CommentDAO {
 
@@ -87,6 +86,6 @@ class CommentDAO {
 			}
 			return $comment;
 		}
-	}	
+	}
 }
 ?>
