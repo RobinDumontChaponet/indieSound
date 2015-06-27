@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost:8889
--- Généré le :  Sam 27 Juin 2015 à 02:48
+-- Généré le :  Sam 27 Juin 2015 à 08:55
 -- Version du serveur :  5.5.42
 -- Version de PHP :  5.6.7
 
@@ -25,8 +25,6 @@ SET time_zone = "+00:00";
 --
 -- Structure de la table `auth`
 --
--- Création :  Sam 27 Juin 2015 à 00:30
---
 
 CREATE TABLE `auth` (
   `idRight` int(5) NOT NULL,
@@ -40,22 +38,19 @@ CREATE TABLE `auth` (
 --
 -- Structure de la table `comment`
 --
--- Création :  Sam 27 Juin 2015 à 00:42
---
 
 CREATE TABLE `comment` (
   `idComment` int(5) NOT NULL,
   `author` int(5) NOT NULL,
   `value` varchar(300) NOT NULL,
-  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `version` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `genre`
---
--- Création :  Ven 26 Juin 2015 à 22:55
 --
 
 CREATE TABLE `genre` (
@@ -68,8 +63,6 @@ CREATE TABLE `genre` (
 --
 -- Structure de la table `hasGenre`
 --
--- Création :  Sam 27 Juin 2015 à 00:21
---
 
 CREATE TABLE `hasGenre` (
   `project` int(8) NOT NULL,
@@ -79,9 +72,18 @@ CREATE TABLE `hasGenre` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `project`
+-- Structure de la table `hasParticipated`
 --
--- Création :  Sam 27 Juin 2015 à 00:43
+
+CREATE TABLE `hasParticipated` (
+  `user` int(8) NOT NULL,
+  `version` int(8) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `project`
 --
 
 CREATE TABLE `project` (
@@ -99,8 +101,6 @@ CREATE TABLE `project` (
 --
 -- Structure de la table `sound`
 --
--- Création :  Sam 27 Juin 2015 à 00:46
---
 
 CREATE TABLE `sound` (
   `idSound` int(8) NOT NULL,
@@ -114,8 +114,6 @@ CREATE TABLE `sound` (
 
 --
 -- Structure de la table `user`
---
--- Création :  Ven 26 Juin 2015 à 21:42
 --
 
 CREATE TABLE `user` (
@@ -131,8 +129,6 @@ CREATE TABLE `user` (
 
 --
 -- Structure de la table `version`
---
--- Création :  Sam 27 Juin 2015 à 00:46
 --
 
 CREATE TABLE `version` (
@@ -160,7 +156,8 @@ ALTER TABLE `auth`
 --
 ALTER TABLE `comment`
   ADD PRIMARY KEY (`idComment`),
-  ADD KEY `author` (`author`);
+  ADD KEY `author` (`author`),
+  ADD KEY `version` (`version`);
 
 --
 -- Index pour la table `genre`
@@ -175,6 +172,12 @@ ALTER TABLE `hasGenre`
   ADD PRIMARY KEY (`project`,`genre`),
   ADD KEY `project` (`project`),
   ADD KEY `project_2` (`project`);
+
+--
+-- Index pour la table `hasParticipated`
+--
+ALTER TABLE `hasParticipated`
+  ADD KEY `user` (`user`,`version`);
 
 --
 -- Index pour la table `project`
@@ -260,15 +263,16 @@ ALTER TABLE `auth`
 -- Contraintes pour la table `comment`
 --
 ALTER TABLE `comment`
+  ADD CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`version`) REFERENCES `version` (`idVersion`),
   ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`author`) REFERENCES `user` (`idUser`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `project`
 --
 ALTER TABLE `project`
-  ADD CONSTRAINT `project_ibfk_3` FOREIGN KEY (`parent`) REFERENCES `project` (`idProjet`) ON DELETE NO ACTION,
   ADD CONSTRAINT `project_ibfk_1` FOREIGN KEY (`owner`) REFERENCES `user` (`idUser`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `project_ibfk_2` FOREIGN KEY (`root`) REFERENCES `version` (`idVersion`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `project_ibfk_2` FOREIGN KEY (`root`) REFERENCES `version` (`idVersion`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `project_ibfk_3` FOREIGN KEY (`parent`) REFERENCES `project` (`idProjet`) ON DELETE NO ACTION;
 
 --
 -- Contraintes pour la table `sound`
