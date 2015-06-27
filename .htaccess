@@ -273,6 +273,7 @@ FileETag None
 	RewriteRule ^right %{ENV:BASE}/index.php?requ=right [NC]
 	RewriteRule ^create %{ENV:BASE}/index.php?requ=create [NC]
 	RewriteRule ^register %{ENV:BASE}/index.php?requ=register [NC]
+	RewriteRule ^contact %{ENV:BASE}/index.php?requ=contact [NC]
 
 
 
