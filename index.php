@@ -64,7 +64,7 @@ if($matches[1]) {
 	<meta http-equiv="content-language" content="fr" />
 	<meta name="language" content="fr" />
 	<base href="<?php echo dirname($_SERVER['PHP_SELF']).'/' ?>">
-	<title>Sound Tree<?php if(!empty($title)) echo ' | '.$title; ?></title>
+	<title>IndieSound<?php if(!empty($title)) echo ' | '.$title; ?></title>
 	<link rel="author" href="humans.txt" />
 	<!--[if IE]><link rel="shortcut icon" href="style/favicon-32.ico"><![endif]-->
 	<link rel="icon" href="style/favicon-96.png">
@@ -86,7 +86,7 @@ if($matches[1]) {
 		<?php echo $inc; ?>
 	</div>
 	<footer>
-	    <p>Application développé par la Team 2A au Hackathon musical <a href="right">Mentions legales</a></p>
+	    <p>Application développé par la Team 2A au Hackathon musical | <a href="legals">Mentions légales</a> | <a href="contact">Contact</a></p>
 	</footer>
 <script type="text/javascript">
 </script>

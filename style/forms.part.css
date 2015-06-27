@@ -119,7 +119,7 @@ input[disabled]:hover, .button[disabled]:hover, button[disabled]:hover, select[d
 	-o-transform: none;
 	transform: none;
 }
-#wrapper .active {
+#content .active {
 	-webkit-transform: scale(.90) translateY(0.10%);
 	-moz-transform: scale(.90) translateY(0.10%);
 	-ms-transform: scale(.90) translateY(0.10%);

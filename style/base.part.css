@@ -2,25 +2,11 @@
 
 @font-face {
 	font-family: 'icomoon';
-	src:url('fonts/icomoon.eot?-drcn6k');
-	src:url('fonts/icomoon.eot?#iefix-drcn6k') format('embedded-opentype'),
-		url('fonts/icomoon.woff?-drcn6k') format('woff'),
-		url('fonts/icomoon.ttf?-drcn6k') format('truetype'),
-		url('fonts/icomoon.svg?-drcn6k#icomoon') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'ChunkFiveRegular';
-	src: url('fonts/chunkfive-webfont.eot');
-	src: url('fonts/chunkfive-webfont.eot?#iefix') format('embedded-opentype'),
-		 url('fonts/chunkfive-webfont.woff2') format('woff2'),
-		 url('fonts/chunkfive-webfont.woff') format('woff'),
-		 url('fonts/chunkfive-webfont.ttf') format('truetype'),
-		 url('fonts/chunkfive-webfont.svg#chunkfiveroman') format('svg');
-    font-weight: normal;
-    font-style: normal;
+	src:url('fonts/icomoon.eot?-3dnc5');
+	src:url('fonts/icomoon.eot?#iefix-3dnc5') format('embedded-opentype'),
+		url('fonts/icomoon.ttf?-3dnc5') format('truetype'),
+		url('fonts/icomoon.woff?-3dnc5') format('woff'),
+		url('fonts/icomoon.svg?-3dnc5#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
