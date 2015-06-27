@@ -29,8 +29,4 @@
 			<a href="create">Essayez !</a>
 		</section>
 	</section>
-	<section id="footer">
-		<p>Application developpe par la Team 2A au Hackathon musical</p>
-		<a href="right">Mention legal</a>
-	</section>
 </div>

@@ -20,8 +20,4 @@
     <section id="right">
         <p> bla bla legal bla bla securise bla bla </p>
     </section>
-    <section id="footer">
-        <p>Application developpe par la Team 2A au Hackathon musical</p>
-        <a href="right">Mention legal</a>
-    </section>
 </div>

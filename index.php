@@ -85,10 +85,9 @@ if($matches[1]) {
 		<?php include('header.inc.php');?>
 		<?php echo $inc; ?>
 	</div>
-	<?php /* <footer>
-		<p>Beuargh ©<br></p>
+	<footer>
+	    <p>Application developpe par la Team 2A au Hackathon musical <a href="right">Mention legal</a></p>
 	</footer>
-	*/?>
 <script type="text/javascript">
 </script>
 </body>

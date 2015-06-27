@@ -1,6 +1,6 @@
-<!--meta title="home" css="" js=""-->
+<!--meta title="Home"-->
 <div id="content">
-    <section id="navbar">
+    <aside>
         <section id="login">
             <form>
                 <input type="text" name="identifiant" placeholder="nom d'utilisateur"/>
@@ -16,7 +16,7 @@
                 <input type="submit" name="validateSearch" value="search"/>
             </form>
         </section>
-    </section>
+    </aside>
     <section id="formRegister">
         <form>
             <input type="text" name="username" placeholder="Nom d'utilisateur"/>
@@ -25,9 +25,5 @@
             <label name="labelConfirmationEmail">Confirmation adresse Email</label><input type="email" name="confirmationMail"/>
             <input type="submit" name="valideRegister" value="Confirmer"/>
         </form>
-    </section>
-    <section id="footer">
-        <p>Application developpe par la Team 2A au Hackathon musical</p>
-        <a href="right">Mention legal</a>
     </section>
 </div>
