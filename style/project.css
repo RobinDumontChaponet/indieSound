@@ -1,0 +1,21 @@
+#content aside {
+	width: 20%;
+	padding: 2em 0;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	overflow-y: auto;
+	height: 100%;
+}
+
+#playground {
+	float: right;
+	position: absolute;
+	margin: 0 0 0 22%;
+	width: 76%;
+	padding: 2em 2.875em;
+	height: auto;
+	text-align: justify;
+	line-height: 1.7857;
+	background: #EDEDED;
+}
