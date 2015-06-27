@@ -48,8 +48,8 @@ a[href="new"]:before {
 a[href="profile"]:before {
 	content: "\f067";
 }
-li ul a[href="#"]:before {
-	content: "\f067"!important;
+li ul a[href=""]:before {
+	content: "\f003"!important;
 }
 li ul a[href="parameter"]:before {
 	content: "\f013"!important;
