@@ -4,15 +4,18 @@ class Version {
 	private $id;
 	private $users;
 	private $name;
+	private $duration;
 	private $description;
 	private $commentaires;
 
-	public function __construct ($id='', $users='', $name='', $description='', $commentaires='') {
+	public function __construct ($id='', $users='', $name='',$views='', $description='', $commentaires='', $duration='') {
 		$this->id=$id;
 		$this->users=$users;
 		$this->name=$name;
+		$this->views=$views;
 		$this->description=$description;
 		$this->commentaires=$commentaires;
+		$this->duration=$duration;
 	}
 
 	public function getId () {
@@ -24,11 +27,17 @@ class Version {
 	public function getName () {
 		return $this->name;
 	}
+	public function getViews(){
+		return $this->views;
+	}
 	public function getDescription () {
 		return $this->description;
 	}
 	public function getCommentaires () {
 		return $this->commentaires;
+	}
+	public function  getDuration(){
+		return $this->duration;
 	}
 
 	public function setId ($id) {
@@ -36,7 +45,7 @@ class Version {
 	}
 	public function setUser ($users) {
 		if (gettype($users) == 'array') {
-			$this->author=($author);
+			$this->author=($users);
 		}
 		else {
 			echo "Version::users should be of type array : ".gettype($users);
@@ -44,6 +53,9 @@ class Version {
 	}
 	public function setName ($name) {
 		$this->name=$name;
+	}
+	public function setViews($views){
+		$this->views=$views;
 	}
 	public function setDescription ($description) {
 		$this->description=$description;
@@ -55,6 +67,9 @@ public function setCommentaires ($commentaires) {
 		} else {
 			echo "Version::commentaires should be of type array : ".gettype($commentaires);
 		}	
+	}
+	public function setDuration($duration){
+		$this->duration=$duration;
 	}
 
 	public function __toString () {
