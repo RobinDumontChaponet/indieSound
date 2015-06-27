@@ -9,18 +9,21 @@ header h1 {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	position: relative;
 	margin-bottom: 2em;
-}
-header h1 a, header h1 a:active, header h1 a:hover, header h1 a:visited {
-	color: lightgrey;
-}
-
-header nav h1 {
 	position: relative;
 	font-weight: bold;
 	margin-top: 1em;
 	float: center;
 	display: inline-block;
 	padding: 5px 24px;
+}
+
+header h1 a, header h1 a:active, header h1 a:hover, header h1 a:visited {
+	color: lightgrey;
+}
+
+header nav {
+	float: right;
+	margin-top: 1.5em;
 }
 
 
@@ -39,6 +42,10 @@ header nav div {
 
 header nav div a {
 	display: block;
+}
+
+.connection {
+	float :right;
 }
 
 
