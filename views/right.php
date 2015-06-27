@@ -1,4 +1,4 @@
-<!--meta title="home" css="" js=""-->
+<!--meta title="right" css="" js=""-->
 <div id="content">
         <section id="search">
             <form>

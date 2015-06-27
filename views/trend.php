@@ -1,4 +1,7 @@
-<!--meta title="home" css="" js=""-->
+<!--meta title="trend" css="" js=""-->
+<?php
+include_once MODELS_INC.'VersionDAO.php'
+?>
 <div id="content">
     <section id="trend">
         <table>

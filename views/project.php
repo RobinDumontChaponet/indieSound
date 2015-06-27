@@ -1,4 +1,4 @@
-<!--meta title=""-->
+<!--meta title="project"-->
 <div id="content">
 	<aside>
 		<button id="orderByLikes" />

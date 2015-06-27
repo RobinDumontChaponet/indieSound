@@ -1,4 +1,4 @@
-<!--meta title="Home"-->
+<!--meta title="register"-->
 <div id="content">
     <section id="formRegister">
         <form>
