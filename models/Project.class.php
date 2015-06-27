@@ -9,11 +9,11 @@ class Project {
 	private $version;
 	private $description;
 	private $parent;
-	private $lock;
-	private $rights;
+	private $locked;
+	private $auth;
 
 	//-------------------CONSTRUCTORS-------------------
-	public function __construct($id, $name, $genre, $owner, $root, $version, $description, $parent, $lock, $rights) {
+	public function __construct($id, $name, $genre, $owner, $root, $version, $description, $parent, $locked, $auth) {
 		$this->setId($id);
 		$this->setName($name);
 		$this->setGenre($genre);
@@ -22,8 +22,8 @@ class Project {
 		$this->setVersion($version);
 		$this->setDescription($description);
 		$this->setParent($parent);
-		$this->setLock($lock);
-		$this->setRights($rights);
+		$this->setLocked($lock);
+		$this->setAuth($auth);
 
 	}
 	// -------------------GETTERS-------------------
@@ -59,12 +59,12 @@ class Project {
 		return $this->parent;
 	}
 
-	public function getLock() {
+	public function getLocked() {
 		return $this->lock;
 	}
 
-	public function getRights() {
-		return $this->rights;
+	public function getAuth() {
+		return $this->auth;
 	}
 
 	//-------------------SETTERS-------------------
@@ -80,26 +80,26 @@ class Project {
 	public function setGenre($genre) {
 		$this->genre = trim($genre);
 	}
-	public function setOwner(){
+	public function setOwner($owner){
 		$this->owner = trim($owner);
 	}
-	public function setRoot(){ 
+	public function setRoot($root){ 
 		$this->root = trim($root);
 	}
-	public function setVersion() {
+	public function setVersion($version) {
 		$this->version = trim($version);
 	}
-	public function setDescription() {
+	public function setDescription($version) {
 		$this->version = trim ($description);
 	}
-	public function setParent() {
+	public function setParent($parent) {
 		$this->parent = trim($parent);
 	}
-	public function setLock() {
-		$this->lock = $lock;
+	public function setLock($locked) {
+		$this->locked = $locked;
 	}
-	public function setRights() {
-		$this->rights = $rights;
+	public function setAuth($auth) {
+		$this->auth = $auth;
 	}
 
 	
@@ -107,7 +107,7 @@ class Project {
 	public function __toString() {
 		return "Id : ".$this->id." Nom du projet : ".$this->name." Genre : "
 			.$this->genre." Proprietaire : ".$this->owner." Version : ".$this->version." Description : "
-			.$this->description." Projet Parent : ".$this->parent." Projet privé : ".$this->lock." Droits : ".$this->rights;
+			.$this->description." Projet Parent : ".$this->parent." Projet privé : ".$this->locked." Droits : ".$this->auth;
 	}
 }
 ?>
