@@ -4,7 +4,7 @@ require_once("User.class.php");
 class UserDAO {
 
 	public static function create (&$user) {
-		if (get_class( $obj ) == "User") {
+		if (get_class( $user ) == "User") {
 			try {
 				$connect=SPDO::getInstance();
 				$statement = $connect->prepare('INSERT INTO user(login, password, mail, lastName, firstName) VALUES (?, ?, ?, ?, ?)');
@@ -32,7 +32,7 @@ class UserDAO {
 	}
 
 	public static function update ($user) {
-		if (get_class( $obj ) == "User") {
+		if (get_class( $user ) == "User") {
 			try {
 				$connect=SPDO::getInstance();
 				$statement = $connect->prepare('UPDATE user SET  login=?, password=?, mail=?, lastName=?, firstName=? WHERE id=?');
@@ -50,7 +50,7 @@ class UserDAO {
 	}
 
 	public static function delete ($user) {
-		if (get_class( $obj ) == "User") {
+		if (get_class( $user ) == "User") {
 			try {
 				$connect=SPDO::getInstance();
 				$statement = $connect->prepare('DELETE FROM user WHERE id=?');
@@ -63,21 +63,19 @@ class UserDAO {
 	}
 
 	public static function getAll () {
-		if (get_class( $obj ) == "User") {
-			$user = array();
-			try {
-				$connect=SPDO::getInstance();
-				$statement = $connect->prepare('SELECT * FROM user');
+		$user = array();
+		try {
+			$connect=SPDO::getInstance();
+			$statement = $connect->prepare('SELECT * FROM user');
+	
+			$statement->execute();
 
-				$statement->execute();
-
-				while ($rs = $statement->fetch(PDO::FETCH_OBJ))
-					$user[]=new User($rs->id, $rs->login, $rs->password, $rs->mail, $rs->lastName, $rs->firstName );
-			} catch (PDOException $e) {
-				die('Error! getAll:' . $e->getMessage() . '<br/>');
-			}
-			return $user;
+			while ($rs = $statement->fetch(PDO::FETCH_OBJ))
+				$user[]=new User($rs->id, $rs->login, $rs->password, $rs->mail, $rs->lastName, $rs->firstName );
+		} catch (PDOException $e) {
+			die('Error! getAll:' . $e->getMessage() . '<br/>');
 		}
+		return $user;
 	}
 
 	public static function getById ($id) {
@@ -114,7 +112,7 @@ class UserDAO {
 	}
 
 	public static function isExistLogin ($login) {
-			if (get_class( $obj ) == "User") {
+			if (get_class( $login ) == "User") {
 			$user = null;
 
 			try {
