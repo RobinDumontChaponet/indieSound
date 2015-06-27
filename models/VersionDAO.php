@@ -6,7 +6,7 @@ include_once MODELS_INC.'Version.class.php';
 class VersionDAO {
 
 	public static function create (&$version) {
-		if (get_class( $obj ) == "Version") {
+		if (get_class( $version ) == "Version") {
 			try {;
 				$connect=SPDO::getInstance();
 				$statement = $connect->prepare('INSERT INTO version([...],name,duration, description, [...]) VALUES (?,?, ?, ?, ?)');
@@ -28,7 +28,7 @@ class VersionDAO {
 	}
 
 	public static function update ($version) {
-		if (get_class( $obj ) == "Version") {
+		if (get_class( $version) == "Version") {
 			try {
 				$connect=SPDO::getInstance();
 				$statement = $connect->prepare('UPDATE version SET description=? WHERE id=?');
@@ -44,7 +44,7 @@ class VersionDAO {
 	}
 
 	public static function delete ($version) {
-		if (get_class( $obj ) == "Version") {
+		if (get_class( $version) == "Version") {
 			try {
 				$connect=SPDO::getInstance();
 				$statement = $connect->prepare('DELETE FROM version WHERE id=?');
@@ -58,7 +58,7 @@ class VersionDAO {
 	}
 
 	public static function getAll () {
-		if (get_class( $obj ) == "Version") {
+		if (get_class( $version ) == "Version") {
 			$version = array();
 			try {
 				$connect=SPDO::getInstance();
@@ -76,8 +76,6 @@ class VersionDAO {
 	}
 
 	public static function getById ($id) {
-		if (get_class( $obj ) == "Version") {
-			$version = null;
 			try {
 				$connect=SPDO::getInstance();
 				$statement = $connect->prepare('SELECT * FROM version where id=?');
@@ -91,10 +89,7 @@ class VersionDAO {
 			}
 			return $version;
 		}
-	}
 	public static function getByNbViews(){
-		if(get_class($obj)=="Version"){
-			$version=null;
 			try{
 				$connect=SPDO::getInstance();
 				$statement=$connect->prepare('SELECT * FROM version ORDER BY views DESC MAX 20');
@@ -107,5 +102,4 @@ class VersionDAO {
 			return $version;
 		}
 	}
-}
 ?>
