@@ -269,7 +269,11 @@ FileETag None
 
 #### Traditional rewriting
 	#### Specifics
-	#RewriteRule ^specialisation-editer/([^/]+) %{ENV:BASE}/index.php?requ=specialisation-editer&id=$1 [NC]
+	RewriteRule ^trend %{ENV:BASE}/index.php?requ=trend [NC]
+    RewriteRule ^right %{ENV:BASE}/index.php?requ=right [NC]
+    RewriteRule ^create %{ENV:BASE}/index.php?requ=create [NC]
+    RewriteRule ^register %{ENV:BASE}/index.php?requ=register [NC]
+
 
 
 #### Generals
