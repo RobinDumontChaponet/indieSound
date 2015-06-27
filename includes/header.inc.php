@@ -8,7 +8,7 @@
 			<?php if(empty($_SESSION['stUser'])) { ?>
 			<li><a href="connection">Se connecter</a></li>
 			<?php } else { ?>
-			<li class "sub"><a href="#"> Nom du Compte<!--<?= ($_SESSION['stUser']) ?> --></a>
+			<li class "sub"><a href="#"><?= $_SESSION['stUser']->getLogin() ?></a>
 				<ul>
 					<li><a href="#">Notifications</a></li>
 					<li><a href="#"> Réglages </a></li>
