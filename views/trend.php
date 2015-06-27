@@ -14,13 +14,15 @@ include_once MODELS_INC.'VersionDAO.php';
             </tr>
             <?php
             $list[]=VersionDAO::getByNbViews();
+
             foreach($list as $trend){
                 $rang=1;
                 echo('<tr>
                         <th>' . $rang .'</th>
-                        <th>boutonlecture</th>
-                        <th>'. $trend->getDuration() .'</tr>
-                        <th>' . $trend->getName() .'</th>');
+                        <th>666</th>
+                        <th>'. $trend->getDuration() . '</th>
+                        <th>' . $trend->getName() . '</th>
+                </tr>');
                 $rang++;
             }
             ?>

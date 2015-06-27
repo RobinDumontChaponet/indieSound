@@ -135,6 +135,7 @@ CREATE TABLE `version` (
   `idVersion` int(5) NOT NULL,
   `project` int(8) NOT NULL,
   `name` varchar(42) NOT NULL,
+  `user` int(5) NOT NULL,
   `views` int(10) NOT NULL,
   `duration` int(6) NOT NULL,
   `description` varchar(80) NOT NULL

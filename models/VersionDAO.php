@@ -6,12 +6,13 @@ class VersionDAO {
 		if (get_class( $version ) == "Version") {
 			try {
 				$connect=SPDO::getInstance();
-				$statement = $connect->prepare('INSERT INTO version(name,views,duration, description, project) VALUES (?,?, ?, ?)');
-				$statement->bindParam(1, $version->getName());
-				$statement->bindParam(2, $version->getViews());
-				$statement->bindParam(3, $version->getDuration());
-				$statement->bindParam(4, $version->getDescription());
-				$statement->bindParam(5, $version->getProjectId());
+				$statement = $connect->prepare('INSERT INTO version(project,name,user,views,duration,description,) VALUES (?,?,?,?,?,?)');
+				$statement->bindParam(1, $version->getProject());
+				$statement->bindParam(2, $version->getName());
+				$statement->bindParam(3, $version->getUsers());
+				$statement->bindParam(4, $version->getViews());
+				$statement->bindParam(5, $version->getDuration());
+				$statement->bindParam(6, $version->getDescription());
 				$statement->execute();
 //////
 				return $connect->lastInsertId();
@@ -55,7 +56,7 @@ class VersionDAO {
 			$statement->execute();
 			while ($rs = $statement->fetch(PDO::FETCH_OBJ)) {
 				$users   = HasParticipatedDAO::getByVersionId($rs->idVersion);
-				$version = new Version($rs->idVersion, $users, $rs->name,$rs->views,$rs->duration, $rs->description, null);
+				$version = new Version($rs->idVersion,$rs->views, $rs->duration,$rs->description);
 				$version->setComments(CommentDAO::getByVersion($version));
 				$versions[] = $version;
 			}
@@ -87,7 +88,7 @@ class VersionDAO {
 			$statement=$connect->prepare('SELECT * FROM version ORDER BY views DESC LIMIT 20');
 			$statement->execute();
 			if($rs=$statement->fetch(PDO::FETCH_OBJ))
-				$version=new Version($rs->id, $rs->users[], $rs->name,$rs->views,$rs->duration, $rs->description, $rs->commentaires[]);
+				$version=new Version($rs->idVersion,$rs->project,$rs->name ,$rs->views,$rs->duration,$rs->description);
 		} catch (PDOException $e){
 			die('Error!: '.$e->getMessage().'<br/>');
 		}

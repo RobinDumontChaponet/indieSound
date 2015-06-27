@@ -2,20 +2,22 @@
 
 class Version {
 	private $id;
+	private $project;
 	private $users;
-	private $name;
+	private  $views;
 	private $duration;
 	private $description;
 	private $commentaires;
 
-	public function __construct ($id='', $users='', $name='',$views='', $description='', $commentaires='', $duration='') {
+	public function __construct ($id='', $users='', $name='',$views='',$duration='', $description='', $commentaires='') {
 		$this->id=$id;
 		$this->users=$users;
 		$this->name=$name;
 		$this->views=$views;
+		$this->duration=$duration;
 		$this->description=$description;
 		$this->commentaires=$commentaires;
-		$this->duration=$duration;
+
 	}
 
 	public function getId () {
@@ -39,6 +41,9 @@ class Version {
 	public function  getDuration(){
 		return $this->duration;
 	}
+	public function getProject(){
+		return $this->project;
+	}
 
 	public function setId ($id) {
 		$this->id=$id;
@@ -50,6 +55,9 @@ class Version {
 		else {
 			echo "Version::users should be of type array : ".gettype($users);
 		}
+	}
+	public function setProject($project){
+		$this->project=$project;
 	}
 	public function setName ($name) {
 		$this->name=$name;
