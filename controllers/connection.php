@@ -11,11 +11,11 @@ foreach($badAgents as $agent) {
 header("HTTP/1.1 200 OK");
 if (isset($_SESSION['stUser']) && $_SESSION['stUser']!='')
 	header ('Location: index.php');
-elseif (isset($_POST['user']) && isset($_POST['pwd']) && !$bot) {
-	if ($_POST['user']=='' || $_POST['pwd']=='') $badinput=true;
+elseif (isset($_POST['user']) && isset($_POST['password']) && !$bot) {
+	if ($_POST['user']=='' || $_POST['password']=='') $badinput=true;
 	else {
 		include('conf.inc.php');
-		include(MODELS_INC.'CompteDAO.class.php');
+		include(MODELS_INC.'UserDAO.class.php');
 		include_once('passwordHash.inc.php');
 
 		$user = UserDAO::getByLogin ($_POST['login']);
