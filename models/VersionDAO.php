@@ -8,8 +8,8 @@ class VersionDAO {
 				$connect=SPDO::getInstance();
 				$statement = $connect->prepare('INSERT INTO version(name,views,duration, description, project) VALUES (?,?, ?, ?)');
 				$statement->bindParam(1, $version->getName());
-				$statement->bindParam(2,$version->getViews());
-				$statement->bindParam(3,$version->getDuration());
+				$statement->bindParam(2, $version->getViews());
+				$statement->bindParam(3, $version->getDuration());
 				$statement->bindParam(4, $version->getDescription());
 				$statement->bindParam(5, $version->getProjectId());
 				$statement->execute();
@@ -81,9 +81,10 @@ class VersionDAO {
 		return $version;
 	}
 	public static function getByNbViews(){
+		$version=null;
 		try{
 			$connect=SPDO::getInstance();
-			$statement=$connect->prepare('SELECT * FROM version ORDER BY views DESC MAX 20');
+			$statement=$connect->prepare('SELECT * FROM version ORDER BY views DESC LIMIT 20');
 			$statement->execute();
 			if($rs=$statement->fetch(PDO::FETCH_OBJ))
 				$version=new Version($rs->id, $rs->users[], $rs->name,$rs->views,$rs->duration, $rs->description, $rs->commentaires[]);
