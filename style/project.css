@@ -1,3 +1,10 @@
+#wrapper > #content {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: #fff;
+}
+
 #content aside {
 	width: 20%;
 	padding: 2em 0;
@@ -6,10 +13,11 @@
 	overflow: hidden;
 	overflow-y: auto;
 	height: 100%;
+	float: left;
 }
 
 #playground {
-	float: right;
+
 	position: absolute;
 	margin: 0 0 0 22%;
 	width: 76%;
@@ -18,4 +26,13 @@
 	text-align: justify;
 	line-height: 1.7857;
 	background: #EDEDED;
+}
+
+#playground dd div {
+	display: inline-block;
+	width: 100px;
+	height: 40px;
+	background: red;
+	border: 1px solid lightgrey;
+	border-radius: 8px;
 }
