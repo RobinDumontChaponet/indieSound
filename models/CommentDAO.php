@@ -62,7 +62,7 @@ class CommentDAO {
 				$statement->execute();
 
 				while ($rs = $statement->fetch(PDO::FETCH_OBJ))
-					$comment[]=new Comment($rs->id, $rs->author, $rs->comment, $rs->time);
+					$comment[]=new Comment($rs->id, $rs->author, $rs->comment, $rs->time, $rs->version);
 			} catch (PDOException $e) {
 				die('Error!: ' . $e->getMessage() . '<br/>');
 			}
@@ -80,7 +80,25 @@ class CommentDAO {
 				$statement->execute();
 
 				if($rs = $statement->fetch(PDO::FETCH_OBJ))
-					$comment=new Comment($rs->id, $rs->author, $rs->comment, $rs->time);
+					$comment=new Comment($rs->id, $rs->author, $rs->comment, $rs->time, $rs->version);
+			} catch (PDOException $e) {
+				die('Error!: ' . $e->getMessage() . '<br/>');
+			}
+			return $comment;
+		}
+	}
+
+	public static function getByVersion ($version) {
+		if (get_class( $obj ) == "Comment") {
+			$comment = null;
+			try {
+				$connect=SPDO::getInstance();
+				$statement = $connect->prepare('SELECT * FROM comment where version=?');
+				$statement->bindParam(1, $version);
+				$statement->execute();
+
+				if($rs = $statement->fetch(PDO::FETCH_OBJ))
+					$comment=new Comment($rs->id, $rs->author, $rs->comment, $rs->time, $rs->version);
 			} catch (PDOException $e) {
 				die('Error!: ' . $e->getMessage() . '<br/>');
 			}

@@ -39,7 +39,7 @@ class Version {
 	}
 	public function setUser ($users) {
 		if (gettype($users) == 'array') {
-			$this->author=($author);
+			$this->users=($users);
 		}
 		else {
 			echo "Version::users should be of type array : ".gettype($users);
@@ -65,7 +65,7 @@ class Version {
 	}
 
 	public function __toString () {
-		return 'Comment [ id : '.$this->id.'; author : '.$this->author.'; comment : '.$this->comment.'; time : '.$this->time.' ]';
+		return 'Version [ id : '.$this->id.'; users : '.$this->users.'; commentaires : '.$this->commentaires.'; description : '.$this->description.' ]';
 	}
 }
 ?>
