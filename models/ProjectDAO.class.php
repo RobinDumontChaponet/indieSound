@@ -1,6 +1,5 @@
 <?php
-require_once("SPDO.class.php");
-require_once(MODELS_INC."Project.class.php");
+require_once("Project.class.php");
 class ProjectDAO {
 	public static function getAll() {
 		try {

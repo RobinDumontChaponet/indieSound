@@ -1,7 +1,5 @@
 <?php
-
-include_once 'SPDO.class.php';
-include_once MODELS_INC.'User.class.php';
+require_once("User.class.php");
 
 class UserDAO {
 
@@ -13,16 +11,16 @@ class UserDAO {
 				$log = $user->getLogin();
 
 				if (!isExistLogin($log)){
-				$statement->bindParam(1, $log);
-				$pwd = $user->getPassword();
-				$statement->bindParam(2, $pwd);
-				$mail = $user->getMail();
-				$statement->bindParam(3, $mail);
-				$lastName = $user->getLastName();
-				$statement->bindParam(4, $lastName);
-				$firstName = $user->getFirstName();
-				$statement->bindParam(5, $firstName);
-				$statement->execute();
+					$statement->bindParam(1, $log);
+					$pwd = $user->getPassword();
+					$statement->bindParam(2, $pwd);
+					$mail = $user->getMail();
+					$statement->bindParam(3, $mail);
+					$lastName = $user->getLastName();
+					$statement->bindParam(4, $lastName);
+					$firstName = $user->getFirstName();
+					$statement->bindParam(5, $firstName);
+					$statement->execute();
 				} else {
 					return false;
 				}

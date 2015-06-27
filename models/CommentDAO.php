@@ -1,7 +1,6 @@
 <?php
 
-include_once 'SPDO.class.php';
-include_once MODELS_INC.'Comment.class.php';
+require_once("Comment.class.php");
 
 class CommentDAO {
 
@@ -23,7 +22,7 @@ class CommentDAO {
 		}
 	}
 
-	public static function update ($comment) {
+	public static function update ($comments) {
 		if (get_class( $obj ) == "Comment") {
 			try {
 				$connect=SPDO::getInstance();
@@ -39,12 +38,12 @@ class CommentDAO {
 		}
 	}
 
-	public static function delete ($comment) {
+	public static function delete ($comments) {
 		if (get_class( $obj ) == "Comment") {
 			try {
 				$connect=SPDO::getInstance();
 				$statement = $connect->prepare('DELETE FROM comment WHERE id=?');
-				$id = $comment->getId();
+				$id = $comments->getId();
 				$statement->bindParam(1, $id);
 				$statement->execute();
 			} catch (PDOException $e) {
@@ -55,7 +54,7 @@ class CommentDAO {
 
 	public static function getAll () {
 		if (get_class( $obj ) == "Comment") {
-			$comment = array();
+			$comments = array();
 			try {
 				$connect=SPDO::getInstance();
 				$statement = $connect->prepare('SELECT * FROM comment');
@@ -63,11 +62,11 @@ class CommentDAO {
 				$statement->execute();
 
 				while ($rs = $statement->fetch(PDO::FETCH_OBJ))
-					$comment[]=new Comment($rs->id, $rs->author, $rs->comment, $rs->time);
+					$comments[]=new Comment($rs->id, $rs->author, $rs->comment, $rs->time, $rs->version);
 			} catch (PDOException $e) {
 				die('Error!: ' . $e->getMessage() . '<br/>');
 			}
-			return $comment;
+			return $comments;
 		}
 	}
 
@@ -81,12 +80,30 @@ class CommentDAO {
 				$statement->execute();
 
 				if($rs = $statement->fetch(PDO::FETCH_OBJ))
-					$comment=new Comment($rs->id, $rs->author, $rs->comment, $rs->time);
+					$comments=new Comment($rs->id, $rs->author, $rs->comment, $rs->time, $rs->version);
 			} catch (PDOException $e) {
 				die('Error!: ' . $e->getMessage() . '<br/>');
 			}
-			return $comment;
+			return $comments;
 		}
-	}	
+	}
+
+	public static function getByVersion ($version) {
+		if (get_class( $obj ) == "Comment") {
+			$comments = null;
+			try {
+				$connect=SPDO::getInstance();
+				$statement = $connect->prepare('SELECT * FROM comment where version=?');
+				$statement->bindParam(1, $version);
+				$statement->execute();
+
+				if($rs = $statement->fetch(PDO::FETCH_OBJ))
+					$comments=new Comment($rs->id, $rs->author, $rs->comment, $rs->time, $rs->version);
+			} catch (PDOException $e) {
+				die('Error!: ' . $e->getMessage() . '<br/>');
+			}
+			return $comments;
+		}
+	}
 }
 ?>

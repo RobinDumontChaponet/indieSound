@@ -1,5 +1,5 @@
 <?php
 
-    include(VIEWS_INC.'right.php');
+include(VIEWS_INC.'right.php');
 
 ?>

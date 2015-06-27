@@ -20,7 +20,7 @@ class Genre
 	public function setId($id) {
 		$this->id = $id;
 	}
-	public function setName($diplomeDUT) {
+	public function setName($name) {
 		$this->name = $name;
 	}
 //	TO STRING

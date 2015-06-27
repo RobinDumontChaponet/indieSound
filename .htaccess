@@ -254,7 +254,7 @@ FileETag None
 	#RewriteRule ^maintenance.html %{ENV:BASE} [R=301,L]
 
 #### Block access to
-	RewriteRule ^models/(.*)$ %{ENV:BASE}/index.php [R=403,NC,L]
+	#RewriteRule ^models/(.*)$ %{ENV:BASE}/index.php [R=403,NC,L]
 	RewriteRule ^views/(.*)$ %{ENV:BASE}/index.php [R=403,NC,L]
 	RewriteRule ^controllers/(.*)$ %{ENV:BASE}/index.php [R=403,NC,L]
 	RewriteRule ^includes/(.*)$ %{ENV:BASE}/index.php [R=403,NC,L]
