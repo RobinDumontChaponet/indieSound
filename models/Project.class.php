@@ -7,6 +7,7 @@ class Project {
 	private $owner;
 	private $root;
 	private $version;
+	private $views;
 	private $description;
 	private $parent;
 	private $lock;
@@ -80,25 +81,25 @@ class Project {
 	public function setGenre($genre) {
 		$this->genre = trim($genre);
 	}
-	public function setOwner(){
+	public function setOwner($owner){
 		$this->owner = trim($owner);
 	}
-	public function setRoot(){ 
+	public function setRoot($root){
 		$this->root = trim($root);
 	}
-	public function setVersion() {
+	public function setVersion($version) {
 		$this->version = trim($version);
 	}
-	public function setDescription() {
+	public function setDescription($description) {
 		$this->version = trim ($description);
 	}
-	public function setParent() {
+	public function setParent($parent) {
 		$this->parent = trim($parent);
 	}
-	public function setLock() {
+	public function setLock($lock) {
 		$this->lock = $lock;
 	}
-	public function setRights() {
+	public function setRights($rights) {
 		$this->rights = $rights;
 	}
 

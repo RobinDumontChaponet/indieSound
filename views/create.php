@@ -7,7 +7,7 @@
                 <?php
                 $genre[]=genreDAO::getAll();
                 foreach ($genre as $genre){
-                    echo('<option>'+$genre.name+'</option>');
+                    echo('<option>' . $genre->getName() . '</option>');
                 }
                 ?>
             </select>
