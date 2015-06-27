@@ -77,6 +77,11 @@ header li {
 	padding: 4px 8px;
 	display: inline-block;
 	position: relative;
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	-ms-transition: all .5s;
+	-o-transition: all .5s;
+	transition: all .5s;
 }
 header li:hover {
 	background: #A0B5D2;
@@ -95,7 +100,7 @@ header li ul {
 	width: 100%;
 	min-width: 160px;
 	top: 2.25em;
-	left: 0;
+	right: 0;
 	box-shadow: 0 0 1px #fff, 0 0 4px rgba(212, 212, 212, .5);
 	z-index: 110;
 }
