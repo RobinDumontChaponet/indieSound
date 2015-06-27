@@ -1,10 +1,19 @@
 <header>
 	<nav>
 		<ul>
-			<li><a href="#">lien</a></li>
+			<li><h1><a href="<?= SELF ?>">Sound Tree</a></h1></li>
+			<li><a href="#">Tout les morceaux</a></li>
+			<li><a href="#">Nouveau projet</a></li>
+			<li><a href="#">Contact</a></li>
+			<li><a href="#"> Nom du Compte<!--<?= ($_SESSION['stUser']) ?> --></a>
+				<div>
+					<a href="#"> Notifications </a>
+					<a href="#"> Réglages </a>
+				</div>
+			</li>
 		</ul>
 	</nav>
-	<h1><a href="<?= SELF ?>">Sound Tree</a></h1>
+	
 	<a href="connection">Se connecter</a>
 	<aside>
         <form name="search">

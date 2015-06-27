@@ -8,21 +8,40 @@ header h1 {
 	font-size: 23px;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	position: relative;
+	margin-bottom: 2em;
 }
 header h1 a, header h1 a:active, header h1 a:hover, header h1 a:visited {
 	color: lightgrey;
 }
 
-header nav {
+header nav h1 {
 	position: relative;
+	font-weight: bold;
 	margin-top: 1em;
-	float: right;
+	float: center;
+	display: inline-block;
+	padding: 5px 24px;
 }
 
 
 header li {
-	margin: .4em 1em;
+	margin: .4em 1em; 
+	display: inline-block;
+	position: relative;
+
 }
+
+header nav div {
+	position: absolute;
+	display: none;
+	white-space: nowrap;
+}
+
+header nav div a {
+	display: block;
+}
+
+
 
 .notification {
 	position: absolute;
@@ -75,3 +94,6 @@ footer p {
 	text-align: center;
 	color: rgb(182, 182, 182);
 }
+
+
+
