@@ -3,12 +3,13 @@ require_once("Project.class.php");
 class ProjectDAO {
 	public static function getAll() {
 		try {
-			$req=SPDO::getInstance()->query("SELECT `idProject`, `name`, `genre`, `owner`, `root`, `description`, `parent`, `lock` FROM `project` ORDER BY name");
+			$req=SPDO::getInstance()->query("SELECT `idProjet`, `name`, `owner`, `root`, `description`, `parent`, `locked` FROM `project` ORDER BY name");
 			$lst=$req->fetchAll();
 			$lstObjet=array();
 			foreach ($lst as $proj) {
-				$lstObjet[]=new Project($proj['idProject'], $proj['name'], $proj['genre'], $proj['owner'], $proj['root'], $proj['description'], $proj['parent'], $proj['lock']);
+				$lstObjet[]=new Project($proj['idProjet'], $proj['name'], $proj['owner'], $proj['root'],$proj['description'], $proj['description'], $proj['parent'], $proj['locked']);
 			}
+			var_dump($lstObjet);
 			return $lstObjet;
 		} catch(PDOException $e) {
 			die('error get all project '.$e->getMessage().'<br>');
@@ -20,7 +21,7 @@ class ProjectDAO {
 				$statement=SPDO::getInstance()->prepare("SELECT `idProject`, `name`, `genre`, `owner`, `root`, `description`, `parent`, `lock` FROM `project` WHERE idProject=?");
 				$statement->execute(array($id));
 				if ($proj=$statement->fetch()) {
-					return new Project($proj['idProject'], $proj['name'], $proj['genre'], $proj['owner'], $proj['root'], $proj['description'], $proj['parent'], $proj['lock']);
+					return new Project($proj['idProjet'], $proj['name'], $proj['genre'], $proj['owner'], $proj['root'], $proj['description'], $proj['parent'], $proj['locked']);
 				} else {
 					return null;
 				}

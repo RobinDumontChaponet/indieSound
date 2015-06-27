@@ -7,9 +7,10 @@ include_once MODELS_INC . 'ProjectDAO.class.php';
         <ul>
             <?php
             $list=ProjectDAO::getAll();
+
             foreach($list as $project){
                 echo('
-                        <li>' . $project->getName.' '.$project->getGenre().' '.$project->getOwner() .'</li>
+                        <li>' . $project->getName() . ' '.' '.$project->getOwner() .'</li>
                 ');
             }
             ?>

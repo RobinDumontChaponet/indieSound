@@ -1,4 +1,5 @@
 <?php
+
 class Project {
 	//-------------------VARIABLES-------------------
 	private $id;
@@ -7,24 +8,21 @@ class Project {
 	private $owner;
 	private $root;
 	private $version;
-	private $views;
 	private $description;
 	private $parent;
 	private $lock;
-	private $rights;
+
 
 	//-------------------CONSTRUCTORS-------------------
-	public function __construct($id, $name, $genre, $owner, $root, $version, $description, $parent, $lock, $rights) {
+	public function __construct($id, $name, $genre, $owner, $root, $description, $parent, $locked) {
 		$this->setId($id);
 		$this->setName($name);
 		$this->setGenre($genre);
 		$this->setOwner($owner);
 		$this->setRoot($root);
-		$this->setVersion($version);
 		$this->setDescription($description);
 		$this->setParent($parent);
-		$this->setLock($lock);
-		$this->setRights($rights);
+		$this->setLock($locked);
 
 	}
 	// -------------------GETTERS-------------------
@@ -47,11 +45,6 @@ class Project {
 	public function getRoot() {
 		return $this->root;
 	}
-
-	public function getVersion() {
-		return $this->version;
-	}
-
 	public function getDescription() {
 		return $this->parent;
 	}
@@ -64,9 +57,7 @@ class Project {
 		return $this->lock;
 	}
 
-	public function getRights() {
-		return $this->rights;
-	}
+
 
 	//-------------------SETTERS-------------------
 	public function setId($id) {
@@ -75,7 +66,7 @@ class Project {
 		else
 			throw new Exception("Id personne invalide : ".$id);
 	}
-	public function setNom($name) {
+	public function setName($name) {
 		$this->nom = trim($name);
 	}
 	public function setGenre($genre) {
@@ -87,9 +78,6 @@ class Project {
 	public function setRoot($root){
 		$this->root = trim($root);
 	}
-	public function setVersion($version) {
-		$this->version = trim($version);
-	}
 	public function setDescription($description) {
 		$this->version = trim ($description);
 	}
@@ -99,15 +87,11 @@ class Project {
 	public function setLock($lock) {
 		$this->lock = $lock;
 	}
-	public function setRights($rights) {
-		$this->rights = $rights;
-	}
-
 	
 	//-------------------tostring-------------------
 	public function __toString() {
 		return "Id : ".$this->id." Nom du projet : ".$this->name." Genre : "
-			.$this->genre." Proprietaire : ".$this->owner." Version : ".$this->version." Description : "
+			.$this->genre." Proprietaire : ".$this->owner." Description : "
 			.$this->description." Projet Parent : ".$this->parent." Projet privé : ".$this->lock." Droits : ".$this->rights;
 	}
 }
