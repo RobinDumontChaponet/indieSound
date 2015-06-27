@@ -82,14 +82,15 @@ class VersionDAO {
 		}
 		return $version;
 	}
-	public static function getByNbViews(){
+	public static function getByNbViews() {
 		$versions=array();
 		try{
-			$req=SPDO::getInstance()->query('SELECT * FROM `version` ORDER BY views DESC LIMIT 20');
-			$req->execute();
-			while($rs = $req->fetch()){
-					$version = new Version($rs->idVersion,$rs->users, $rs->name,$rs->project, $rs->views, $rs->duration, $rs->description,$rs->commentaires);
-					var_dump($version);
+			$connect=SPDO::getInstance();
+			$statement = $connect->prepare("SELECT * FROM `version` ORDER BY views DESC LIMIT 20");
+			$statement->bindParam(1, $views);
+			$statement->execute();
+			while($rs = $statement->fetch(PDO::FETCH_OBJ)){
+					$version = new Version($rs->idVersion, $rs->user, $rs->name,$rs->project, $rs->views, $rs->duration, $rs->description);
 					$versions[] = $version;
 				}
 		} catch (PDOException $e){

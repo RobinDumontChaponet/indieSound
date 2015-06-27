@@ -15,8 +15,7 @@ include_once MODELS_INC . 'VersionDAO.class.php';
             <?php
             $list=VersionDAO::getByNbViews();
             $rang=1;
-            var_dump($list);
-            /*foreach($list as $trend){
+            foreach($list as $trend){
 
                 echo('<tr>
                         <th>' . $rang .'</th>
@@ -25,7 +24,7 @@ include_once MODELS_INC . 'VersionDAO.class.php';
                         <th>' . $trend->getName() . '</th>
                 </tr>');
                 $rang++;
-            }*/
+            }
             ?>
         </table>
     </section>
