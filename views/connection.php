@@ -1,4 +1,4 @@
-<!--meta title="Connexion"-->
+<!--meta title="Connexion" css="style/connection.css"-->
 <form method="post" action="">
 	<legend>Se Connecter</legend>
 	<label>Nom d'utilisateur</label>
