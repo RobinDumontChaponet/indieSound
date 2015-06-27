@@ -11,18 +11,19 @@ foreach($badAgents as $agent) {
 header("HTTP/1.1 200 OK");
 if (isset($_SESSION['stUser']) && $_SESSION['stUser']!='')
 	header ('Location: index.php');
-elseif (isset($_POST['user']) && isset($_POST['password']) && !$bot) {
-	if ($_POST['user']=='' || $_POST['password']=='') $badinput=true;
+elseif (isset($_POST['login']) && isset($_POST['password']) && !$bot) {
+	if ($_POST['login']=='' || $_POST['password']=='') $badinput=true;
 	else {
-		include('conf.inc.php');
 		include(MODELS_INC.'UserDAO.class.php');
-		include_once('passwordHash.inc.php');
+		include('validate.transit.inc.php');
+		//include_once('passwordHash.inc.php');
 
 		$user = UserDAO::getByLogin ($_POST['login']);
 
 		if ($user != NULL) {
-			if (empty($user) || !validate_password($_POST['password'] , $user->getPassword())) {
+			if (empty($user) || !validePassword($_POST['password'] , $user->getPassword())) {
 				$badinput = true;
+				echo "t'as fail fdp";
 				sleep(1);
 			} else {
 				session_start();
