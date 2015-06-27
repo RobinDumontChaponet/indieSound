@@ -33,7 +33,7 @@ class GenreDAO {
         if (get_class( $obj ) == "Genre") {
             try {
                 $req = SPDO::getInstance()->prepare("INSERT INTO `genre`(`name`) VALUES (?) ");
-                $req-> execute( $obj->getName() ) );
+                $req-> execute( $obj->getName() );
                 $obj->setId( SPDO::getInstance()->LastInsertId() );
                 return $obj->getId();
             } catch (PDOException $e) {
