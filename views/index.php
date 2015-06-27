@@ -1,4 +1,4 @@
-<!--meta title=""-->
+<!--meta title="index"-->
 <div id="content">
 	<section id="teaser">
 		<p>Création et partage de musique du monde entier <br> #CoMusique</p>
