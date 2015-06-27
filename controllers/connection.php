@@ -16,14 +16,14 @@ elseif (isset($_POST['login']) && isset($_POST['password']) && !$bot) {
 	else {
 		include(MODELS_INC.'UserDAO.class.php');
 		include('validate.transit.inc.php');
-		//include_once('passwordHash.inc.php');
+		include_once('passwordHash.inc.php');
 
 		$user = UserDAO::getByLogin ($_POST['login']);
 
 		if ($user != NULL) {
 			if (empty($user) || !validePassword($_POST['password'] , $user->getPassword())) {
 				$badinput = true;
-				echo "t'as fail fdp";
+				echo "fail";
 				sleep(1);
 			} else {
 				session_start();

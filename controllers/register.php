@@ -1,4 +1,5 @@
 <?php
+$valid = array();
 
 if($_POST) {
 	include ('validate.transit.inc.php');
@@ -6,33 +7,41 @@ if($_POST) {
 
     if( $_POST['login'] != NULL ) {
         $login = $_POST['login'];
-        var_dump($login);
+        $valid['login'] = true;
     } else {
-        $errorLogin = true;
+        $valid['login'] = false;
     }
 
     if( $_POST['password'] != NULL ) {
         $password = $_POST['password'];
-        var_dump($password);
+        $valid['password'] = true;
     } else {
-        $errorPassword = true;
+        $valid['password'] = false;
     }
 
     if( $_POST['mail'] != NULL) {
         $mail = $_POST['mail'];
-        var_dump($mail);
+        $valid['mail'] = true;
     } else {
-        $errorMail = true;
+        $valid['mail'] = false;
     }
 
     if( $_POST['mailConfirmation'] != NULL ) {
         $mailConfirmation = $_POST['mailConfirmation'];
-        var_dump($mailConfirmation);
+        $valid['mailConfirmation'] = true;
     } else {
-        $errorMailConfirmation = true;
+        $valid['mailConfirmation'] = false;
     }
 
-	//$password = hash("sha256", $password);
+    if( $valid['login'] && $valid['password'] && $valid['mail'] ) {
+        if( $valid['mailConfirmation'] && ($_POST['mail'] == $_POST['mailConfirmation'])) {
+            $password = hash("sha256", $password);
+            $user = UserDAO::create (new User('', $login, $password, $mail, '', ''));
+            //header('Location: index.php');
+        } else {
+            $valid['mailEqual'] = false;
+        }
+    }
 
 
 	/*if(valideNom($nom) && validePrenom($prenom) && valideMail($mail) && valideUser($login) && !empty($sexe) && validePwd($password) && $verifPassword==$password) {
