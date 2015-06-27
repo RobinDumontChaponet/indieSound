@@ -3,7 +3,7 @@ $valid = array();
 
 if($_POST) {
 	include ('validate.transit.inc.php');
-	include(MODELS_INC.'UserDAO.php');
+	include(MODELS_INC.'UserDAO.class.php');
 
     if( $_POST['login'] != NULL ) {
         $login = $_POST['login'];
@@ -35,7 +35,7 @@ if($_POST) {
 
     if( $valid['login'] && $valid['password'] && $valid['mail'] ) {
         if( $valid['mailConfirmation'] && ($_POST['mail'] == $_POST['mailConfirmation'])) {
-            $password = hash("sha256", $password);
+            $password = create_hash($password);
             $user = UserDAO::create (new User('', $login, $password, $mail, '', ''));
             header('Location: index.php');
         } else {
