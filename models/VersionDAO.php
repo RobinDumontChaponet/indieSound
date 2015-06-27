@@ -7,16 +7,15 @@ class VersionDAO {
 
 	public static function create (&$version) {
 		if (get_class( $obj ) == "Version") {
-			try {;
+			try {
 				$connect=SPDO::getInstance();
-				$statement = $connect->prepare('INSERT INTO version([...], name, description, [...]) VALUES (?, ?, ?, ?)');
-				$statement->bindParam(1, $[...]);
-				$name = $name->getName();
-				$statement->bindParam(2, $name);
-				$description = $description->getDescription();
-				$statement->bindParam(3, $description);
-				$statement->bindParam(4, $[...]);
+				$statement = $connect->prepare('INSERT INTO version(name, description, project) VALUES (?, ?, ?)');
+				$statement->bindParam(1, $version->getName());
+				$statement->bindParam(2, $version->getDescription());
+				$statement->bindParam(3, $version->getProjectId());
 				$statement->execute();
+
+//////
 
 				return $connect->lastInsertId();
 			} catch (PDOException $e) {
@@ -33,6 +32,8 @@ class VersionDAO {
 				$description = $description->getDescription();
 				$statement->bindParam(1, $description);
 				$statement->execute();
+				
+//////
 
 				return $connect->lastInsertId();
 			} catch (PDOException $e) {

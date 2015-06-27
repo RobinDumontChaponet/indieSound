@@ -7,7 +7,7 @@ class Version {
 	private $description;
 	private $commentaires;
 
-	public function __construct ($id='', $users='', $name='', $description='', $commentaires='') {
+	public function __construct ($id='', $users='', $name='', $description='', $commentaires='', $projectId='') {
 		$this->id=$id;
 		$this->users=$users;
 		$this->name=$name;
@@ -30,9 +30,12 @@ class Version {
 	public function getCommentaires () {
 		return $this->commentaires;
 	}
+	public function getProjectId () {
+		return $this->commentaires;
+	}
 
 	public function setId ($id) {
-		$this->id=$id;
+		$this->projectId=$id;
 	}
 	public function setUser ($users) {
 		if (gettype($users) == 'array') {
@@ -49,12 +52,16 @@ class Version {
 		$this->description=$description;
 	}
 
-public function setCommentaires ($commentaires) {
+	public function setCommentaires ($commentaires) {
 		if(gettype($commentaires) == 'array'){
 		$this->commentaires=$commentaires;
 		} else {
 			echo "Version::commentaires should be of type array : ".gettype($commentaires);
 		}	
+	}
+	
+	public function setProjectId ($id) {
+		$this->projectId=$id;
 	}
 
 	public function __toString () {

@@ -1,31 +1,42 @@
 <?php
-if (isset($_SESSION['login']) && $_SESSION['login']!='')
- header ('Location: index.php');
-if(isset($_POST) && !empty($_POST['login']) && !empty($_POST['password'])) {
 
-		include_once('SPDO.class.php');
+$badAgents = array('Java','Jakarta', 'User-Agent', 'compatible ;', 'libwww, lwp-trivial', 'curl, PHP/', 'urllib', 'GT::WWW', 'Snoopy', 'MFC_Tear_Sample', 'HTTP::Lite', 'PHPCrawl', 'URI::Fetch', 'Zend_Http_Client', 'http client', 'PECL::HTTP');
+$bot=false;
+$badinput=false;
+foreach($badAgents as $agent) {
+     if(strpos($_SERVER['HTTP_USER_AGENT'],$agent) !== false)
+        $bot=true;
+}
+session_start();
+header("HTTP/1.1 200 OK");
+if (isset($_SESSION['stUser']) && $_SESSION['stUser']!='')
+	header ('Location: index.php');
+elseif (isset($_POST['user']) && isset($_POST['pwd']) && !$bot) {
+	if ($_POST['user']=='' || $_POST['pwd']=='') $badinput=true;
+	else {
 		include('conf.inc.php');
-		include(MODELS_INC.'UserDAO.php');
-		//include_once('includes/passwordHash.inc.php');
+		include(MODELS_INC.'CompteDAO.class.php');
+		include_once('passwordHash.inc.php');
 
-		$user=UserDAO::getByLogin($_POST['login']);
+		$user = UserDAO::getByLogin ($_POST['login']);
+
 		if ($user != NULL) {
-				if (empty($user) || $_POST['password'] != $user->getPassword()) {
-					$badinput=true;
-					sleep(1);
-				} else {
-					session_start();
-					$_SESSION['login']=$user;
-					session_start();
-					header ('Location: index.php');
-					exit;
-				}
-
+			if (empty($user) || !validate_password($_POST['password'] , $user->getPassword())) {
+				$badinput = true;
+				sleep(1);
+			} else {
+				session_start();
+				$_SESSION['stUser'] = $user;
+				session_start();
+				header ('Location: index.php');
+				exit;
+			}
 		} else {
 			$badinput = true;
 		}
 	}
+}
 
-    include(VIEWS_INC.'connection.php');
+include(VIEWS_INC.'connection.php');
 
 ?>

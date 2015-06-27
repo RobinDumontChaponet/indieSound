@@ -86,7 +86,7 @@ if($matches[1]) {
 		<?php echo $inc; ?>
 	</div>
 	<footer>
-	    <p>Application developpe par la Team 2A au Hackathon musical <a href="right">Mention legal</a></p>
+	    <p>Application développé par la Team 2A au Hackathon musical <a href="right">Mentions legales</a></p>
 	</footer>
 <script type="text/javascript">
 </script>
