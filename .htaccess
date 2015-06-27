@@ -270,9 +270,9 @@ FileETag None
 #### Traditional rewriting
 	#### Specifics
 	RewriteRule ^trend %{ENV:BASE}/index.php?requ=trend [NC]
-    RewriteRule ^right %{ENV:BASE}/index.php?requ=right [NC]
-    RewriteRule ^create %{ENV:BASE}/index.php?requ=create [NC]
-    RewriteRule ^register %{ENV:BASE}/index.php?requ=register [NC]
+	RewriteRule ^right %{ENV:BASE}/index.php?requ=right [NC]
+	RewriteRule ^create %{ENV:BASE}/index.php?requ=create [NC]
+	RewriteRule ^register %{ENV:BASE}/index.php?requ=register [NC]
 
 
 
