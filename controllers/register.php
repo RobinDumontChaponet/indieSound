@@ -37,7 +37,7 @@ if($_POST) {
         if( $valid['mailConfirmation'] && ($_POST['mail'] == $_POST['mailConfirmation'])) {
             $password = hash("sha256", $password);
             $user = UserDAO::create (new User('', $login, $password, $mail, '', ''));
-            //header('Location: index.php');
+            header('Location: index.php');
         } else {
             $valid['mailEqual'] = false;
         }
