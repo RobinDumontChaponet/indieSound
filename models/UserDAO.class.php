@@ -10,7 +10,7 @@ class UserDAO {
 				$statement = $connect->prepare('INSERT INTO user(login, password, mail, lastName, firstName) VALUES (?, ?, ?, ?, ?)');
 				$log = $user->getLogin();
 
-				if (!isExistLogin($log)){
+				if (!UserDAO::isExistLogin($log)){
 					$statement->bindParam(1, $log);
 					$pwd = $user->getPassword();
 					$statement->bindParam(2, $pwd);
@@ -67,7 +67,7 @@ class UserDAO {
 		try {
 			$connect=SPDO::getInstance();
 			$statement = $connect->prepare('SELECT * FROM user');
-	
+
 			$statement->execute();
 
 			while ($rs = $statement->fetch(PDO::FETCH_OBJ))

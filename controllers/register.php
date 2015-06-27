@@ -4,6 +4,7 @@ $valid = array();
 if($_POST) {
 	include ('validate.transit.inc.php');
 	include(MODELS_INC.'UserDAO.class.php');
+	include('passwordHash.inc.php');
 
     if( $_POST['login'] != NULL ) {
         $login = $_POST['login'];
