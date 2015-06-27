@@ -1,6 +1,6 @@
 #wrapper {
 	margin: 0 auto;
-	padding: 0 2.875em;
+	padding: 0 10%;
 	height: auto;
 	min-height: 100%;
 	text-align: justify;
@@ -56,7 +56,7 @@ article, section, fieldset {
 section, fieldset {
 	border-bottom: 1px solid #ececec;
 	margin: 0;
-	padding: 25px 0 15px;
+	padding: 25px 1.5em 15px;
 	position: relative;
 }
 section:first-child, fieldset:first-child {
@@ -79,14 +79,7 @@ section:last-child {
 section:nth-child(2n+1) > h2 {
 	margin-top: -10px;
 }
-section:nth-child(2n+1):before {
-	position: absolute;
-	content: "";
-	top: 0;
-	right: -46px;
-	bottom: 0;
-	left: -46px;
-	z-index: -1;
+section:nth-child(2n+1) {
 	background: rgba(240, 242, 245, 0.6);
 }
 
