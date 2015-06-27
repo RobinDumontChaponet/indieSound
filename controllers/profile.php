@@ -1,7 +1,5 @@
 <?php
 
-include('connection.php');
-
 $user = $_SESSION['stUser'];
 $login = $user->getLogin();
 $email = $user->getMail();
