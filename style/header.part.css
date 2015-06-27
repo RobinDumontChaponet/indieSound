@@ -33,7 +33,7 @@ header a:before {
 a[href="all"]:before {
 	content: "\f00b";
 }
-a[href="new"]:before {
+header a[href="create"]:before {
 	content: "\f067";
 }
 #searchLi a:before {

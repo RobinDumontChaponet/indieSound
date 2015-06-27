@@ -3,7 +3,7 @@
 	<nav>
 		<ul>
 			<li<?= ($_GET['requ']=='all')?' class="active" ':'' ?>><a href="all"><span>Tous les morceaux</span></a></li>
-			<li<?= ($_GET['requ']=='new')?' class="active" ':'' ?>><a href="new"><span>Nouveau projet</span></a></li>
+			<li<?= ($_GET['requ']=='new')?' class="active" ':'' ?>><a href="create"><span>Nouveau projet</span></a></li>
 			<li id="searchLi"><a href="#"><span>Recherche</span></a>
 				<form name="search">
 					<input type="text" name="searchValue" placeholder="Recherche..."/>
