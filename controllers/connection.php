@@ -7,7 +7,7 @@ foreach($badAgents as $agent) {
      if(strpos($_SERVER['HTTP_USER_AGENT'],$agent) !== false)
         $bot=true;
 }
-session_start();
+
 header("HTTP/1.1 200 OK");
 if (isset($_SESSION['stUser']) && $_SESSION['stUser']!='')
 	header ('Location: index.php');
