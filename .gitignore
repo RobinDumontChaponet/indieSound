@@ -31,3 +31,5 @@ node_modules
 .lock-wscript
 /.sass-cache/
 /build/
+
+includes/SPDO.class.php
