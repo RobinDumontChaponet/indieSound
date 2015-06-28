@@ -6,10 +6,11 @@ class GenreDAO {
     public static function getAll() {
         $list = array();
         try {
-            $req = SPDO::getInstance()-> query( "SELECT * FROM `genre`" );
+            $req = SPDO::getInstance()->query( "SELECT * FROM `genre`" );
             while($res = $req->fetch()) {
-                $list[] = new Genre( $res[id], $res[name] );
+                $list[] = new Genre( $res['idGenre'], $res['name'] );
             }
+            return $list;
         } catch(PDOException $e) {
 			    die( 'Error getAll genre '.$e->getMessage().'<br>' );
 		}
@@ -20,7 +21,7 @@ class GenreDAO {
             $req = SPDO::getInstance()-> query( "SELECT * FROM `genre` WHERE `idGenre`=?" );
             $req->execute(array($id));
             if ($res = $req->fetch()){
-			 return new Genre( $res[id], $res[name] );
+			 return new Genre( $res['idGenre'], $res['name'] );
             } else {
                 return null;
             }

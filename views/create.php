@@ -1,6 +1,6 @@
 <!--meta title="Nouveau morceau"-->
 <div id="content">
-	<form>
+	<form  method="post" action="">
 		<input type="text" name="userProject" placeholder="Nom du projet"/>
 		<select name="genre">
 			<?php

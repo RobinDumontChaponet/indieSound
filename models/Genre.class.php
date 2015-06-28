@@ -12,10 +12,10 @@ class Genre
 	}
 //	GETTERS & SETTERS
 	public function getId() {
-		return $this->ancien;
+		return $this->id;
 	}
     public function getName() {
-		return $this->diplomeDUT;
+		return $this->name;
 	}
 	public function setId($id) {
 		$this->id = $id;
