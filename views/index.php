@@ -23,11 +23,11 @@
 					<img src="data/covers/mikaB.jpg"/>
 				</div>
 <audio id="son1">
-	<source src="data/sounds/soldier" type="audio/mp3"/>
+	<source src="data/sounds/soldier.mp3" type="audio/mp3"/>
 </audio>
 				<div class="ControlSong">
 					<button class="rewind"></button>
-					<button class="play"></button>
+					<button class="play" id="play"></button>
 					<button class="volume-up"></button>
 				</div>
 
@@ -102,9 +102,8 @@
 
 
 <script type="text/javascript">
-document.getElementById('play1').addEventListener('click', function () {
+document.getElementById('play').addEventListener('click', function () {
 		document.getElementById('son1').play();
-
 	});
 </script>
 
