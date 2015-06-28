@@ -12,7 +12,7 @@ function loaded() {
 
 /*	for(var i=0, l=json['sounds'].length; i<l; i++) {
 
-*/	}
+}*/
 
 	var glass = blip.clip().sample('glass');
 	var plastic = blip.clip().sample('plastic');

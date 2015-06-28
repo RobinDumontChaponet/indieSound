@@ -1,10 +1,21 @@
 #teaser {
 	background: none;
 }
+#teaser p {
+	color: rgba(255, 255, 255, .63);
+	font-size: 28px;
+	font-weight: bold;
+	text-align: center;
+	text-shadow: 0px 0px 4px rgba(127, 127, 127, 0.31);
+}
 
-dt button:before, #play:before, #rewind:before, #volume-up:before,#heart-o:before,
- #heart:before, #facebook:before, #twitter:before, #google-plus:before, #music:before, #user:before
-{
+#teaser p:first-child {
+	color: rgba(255, 255, 255, .8);
+	font-size: 48px;
+	text-align: center;
+}
+
+dt button:before, .play:before, .rewind:before, .volume-up:before, .heart-o:before, .heart:before, .facebook:before, .twitter:before, .google-plus:before, .music:before, .user:before {
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
@@ -15,7 +26,7 @@ dt button:before, #play:before, #rewind:before, #volume-up:before,#heart-o:befor
 	margin: 0 4px;
 	content: "\f014";
 }
-dt button:before, #play:before, #rewind:before {
+dt button:before, .play:before, .rewind:before {
 	 font-family: 'icomoon';
 	 speak: none;
 	 font-style: normal;
@@ -25,53 +36,41 @@ dt button:before, #play:before, #rewind:before {
 	 line-height: 1;
 	 margin: 0 4px;
 	 content: "\f014";
- }
-#play:before{
+}
+.play:before{
 	content: "\f04b";
 }
-#play.pause:before{
+.play.pause:before{
 	content: "\f04c";
 }
-#rewind:before{
+.rewind:before{
 	content: "\f048";
 }
-#volume-up:before{
+.volume-up:before{
 	content: "\f028";
 }
-#heart-o:before{
+.heart-o:before{
 	content: "\f08a";
 }
-#heart:before{
+.heart:before{
 	content: "\f004";
 }
-#facebook:before{
+.facebook:before{
 	content: "\f082";
 }
-#twitter:before{
+.twitter:before{
 	content: "\f081";
 }
-#google-plus:before{
+.google-plus:before{
 	content: "\f0d4";
 }
-#music:before{
+.music:before{
 	content: "\f001";
 }
-#user:before{
+.user:before{
 	content: "\f007";
 }
 
-dt button span, #play span, #pause span, #rewind span{
+dt button span, .play span, .pause span, .rewind span{
 	display: none;
 }
-/*
-#ImgSong {
-	position: absolute;
-	float: left;
-}
-#titleSong {
-	position: relative;
-	float: center;
-}
-*/
-
-
