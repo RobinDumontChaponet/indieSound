@@ -15,32 +15,34 @@
 
             <li class="soundList__item">
 				<div class= "titleSong">
-					<p class="title"><button id="music">Instrumental Intro Basic Rock </button></p>
-					<p class="author"><button id="user">Mickaël Berko</button></p>
+					<p class="title"><button id="music">Soldier </button></p>
+					<p class="author"><button id="user">Michael Berko</button></p>
 				</div>
 
 				<div class= "ImgSong">
 					<img src="data/covers/mikaB.jpg"/>
 				</div>
-
+<audio id="son1">
+	<source src="data/sounds/soldier" type="audio/mp3"/>
+</audio>
 				<div class="ControlSong">
-					<button id="rewind"></button>
-					<button id="play"></button>
-					<button id="volume-up"></button>
+					<button class="rewind"></button>
+					<button class="play"></button>
+					<button class="volume-up"></button>
 				</div>
 
 				<div class= "SocialSong">
-					<button id="heart"></button>
-					<button id="facebook"></button>
-					<button id="twitter"></button>
-					<button id="google-plus"></button>
+					<button class="heart"></button>
+					<button class="facebook"></button>
+					<button class="twitter"></button>
+					<button class="google-plus"></button>
 				</div>
             </li>
 
             <li class="soundList__item">
 				<div class= "titleSong">
-					<p class="title"><button id="music">Novo Assassino </button></p>
-					<p class="author"><button id="user">Tigre Demon</button></p>
+					<p class="title"><button class="music">Novo Assassino </button></p>
+					<p class="author"><button class="user">Tigre Demon</button></p>
 				</div>
 
 				<div class= "ImgSong">
@@ -49,24 +51,24 @@
 				</div>
 
 				<div class="ControlSong">
-					<button id="rewind"></button>
-					<button id="play"></button>
-					<button id="volume-up"></button>
+					<button class="rewind"></button>
+					<button class="play"></button>
+					<button class="volume-up"></button>
 				</div>
 
 				<div class= "SocialSong">
-					<button id="heart-o"></button>
-					<button id="facebook"></button>
-					<button id="twitter"></button>
-					<button id="google-plus"></button>
+					<button class="heart-o"></button>
+					<button class="facebook"></button>
+					<button class="twitter"></button>
+					<button class="google-plus"></button>
 				</div>
 
             </li>
 
             <li class="soundList__item">
 				<div class= "titleSong">
-					<p class="title"><button id="music">Heavy Metal impro </button></p>
-					<p class="author"><button id="user">Mickaël Berko</button></p>
+					<p class="title"><button class="music">Ocean I </button></p>
+					<p class="author"><button class="user">Michael Berko</button></p>
 				</div>
 
 				<div class= "ImgSong">
@@ -75,16 +77,16 @@
 				</div>
 
 				<div class="ControlSong">
-					<button id="rewind"></button>
-					<button id="play"></button>
-					<button id="volume-up"></button>
+					<button class="rewind"></button>
+					<button class="play"></button>
+					<button class="volume-up"></button>
 				</div>
 
 				<div class= "SocialSong">
-					<button id="heart-o"></button>
-					<button id="facebook"></button>
-					<button id="twitter"></button>
-					<button id="google-plus"></button>
+					<button class="heart-o"></button>
+					<button class="facebook"></button>
+					<button class="twitter"></button>
+					<button class="google-plus"></button>
 				</div>
 
             </li>
@@ -99,5 +101,10 @@
 
 
 
+<script type="text/javascript">
+document.getElementById('play1').addEventListener('click', function () {
+		document.getElementById('son1').play();
 
+	});
+</script>
 
