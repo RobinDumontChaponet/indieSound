@@ -36,11 +36,19 @@ class UserDAO {
 		if (get_class( $user ) == "User") {
 			try {
 				$connect=SPDO::getInstance();
-				$statement = $connect->prepare('UPDATE user SET  login=?, password=?, mail=?, lastName=?, firstName=? WHERE id=?');
-				$statement->bindParam(1, $user->getAuth()->getId());
-				$statement->bindParam(2, $user->getLogin());
-				$statement->bindParam(3, $user->getPwd());
-				$statement->bindParam(4, $user->getId());
+				$statement = $connect->prepare('UPDATE user SET  login=?, password=?, mail=?, lastName=?, firstName=? WHERE idUser=?');
+				$log = $user->getLogin();
+				$statement->bindParam(1, $log);
+				$pwd = $user->getPassword();
+				$statement->bindParam(2, $pwd);
+				$mail = $user->getMail();
+				$statement->bindParam(3, $mail);
+				$lastName = $user->getLastName();
+				$statement->bindParam(4, $lastName);
+				$firstName = $user->getFirstName();
+				$statement->bindParam(5, $firstName);
+				$id = $user->getId();
+				$statement->bindParam(6, $id);
 				$statement->execute();
 
 				return $connect->lastInsertId();
