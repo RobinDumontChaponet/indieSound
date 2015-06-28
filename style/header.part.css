@@ -59,7 +59,7 @@ li ul a[href="logout"]:before {
 }
 
 header h1 a, header h1 a:active, header h1 a:hover, header h1 a:visited {
-	color: lightgrey;
+	color: #dc9171;
 }
 
 header nav {

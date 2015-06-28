@@ -34,6 +34,7 @@ body {
 	-webkit-text-size-adjust:100%;
 	min-width:474px;
 	margin:0 auto;
+	background: url("images/background.jpg") fixed;
 }
 
 a, a:active, a:hover, a:visited {

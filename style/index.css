@@ -1,4 +1,6 @@
-
+#teaser {
+	background: none;
+}
 
 dt button:before, #play:before, #rewind:before, #volume-up:before,#heart-o:before,
  #heart:before, #facebook:before, #twitter:before, #google-plus:before, #music:before, #user:before
@@ -47,7 +49,7 @@ dt button:before, #play:before, #rewind:before {
 }
 #twitter:before{
 	content: "\f081";
-}	
+}
 #google-plus:before{
 	content: "\f0d4";
 }

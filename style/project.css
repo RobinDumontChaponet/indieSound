@@ -45,6 +45,10 @@ aside#sounds {
 	height: 100%;
 }
 
+#versions h3 {
+	display: inline;
+}
+
 #playground {
 	position: relative;
 	margin: 0 18%;

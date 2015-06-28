@@ -1,27 +1,26 @@
-<!--meta title="index" css="style/index.css" js="script/blip.min.js" js="script/project.js"-->
+<!--meta title="index" css="style/index.css"-->
 <div id="content">
 
 	<section id="teaser">
-		<p>Musicien solitaire ? Rejoignez le premier groupe de musique communautaire</p>
+		<p>Musicien solitaire ?</p>
+		<p>Rejoignez le premier groupe de musique communautaire</p>
 		<p>Publiez vos créations et laissez les autres y contribuer</p>
 		<p>Découvrez la création de musique en toute simplicité</p>
 		<a href="create">Essayez !</a>
 	</section>
 
 	<section>
-		<h2> Morceaux du moment</h2>
-			<ul>
+		<h2>Morceaux du moment</h2>
+		<ul>
 
             <li class="soundList__item">
-
-				<div class= "titleSong"> 
+				<div class= "titleSong">
 					<p class="title"><button id="music">Instrumental Intro Basic Rock </button></p>
 					<p class="author"><button id="user">Mickaël Berko</button></p>
 				</div>
 
 				<div class= "ImgSong">
 					<img src="data/covers/mikaB.jpg"/>
-
 				</div>
 
 				<div class="ControlSong">
@@ -36,11 +35,10 @@
 					<button id="twitter"></button>
 					<button id="google-plus"></button>
 				</div>
-
             </li>
 
             <li class="soundList__item">
-				<div class= "titleSong"> 
+				<div class= "titleSong">
 					<p class="title"><button id="music">Novo Assassino </button></p>
 					<p class="author"><button id="user">Tigre Demon</button></p>
 				</div>
@@ -66,7 +64,7 @@
             </li>
 
             <li class="soundList__item">
-				<div class= "titleSong"> 
+				<div class= "titleSong">
 					<p class="title"><button id="music">Heavy Metal impro </button></p>
 					<p class="author"><button id="user">Mickaël Berko</button></p>
 				</div>
@@ -90,8 +88,7 @@
 				</div>
 
             </li>
-
-            </ul>
+		</ul>
 	</section>
 
 	<section id="more">
@@ -99,9 +96,8 @@
 		<p>Découvrez les <a href="trend">Morceaux du moment</a></p>
 	</section>
 </div>
-		
 
 
 
 
-   
+
