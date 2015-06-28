@@ -118,16 +118,16 @@ dt button:hover {
 	transform: scale(.9);
 }
 dt button:before, #play:before, #rewind:before {
-	font-family: 'icomoon';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-	margin: 0 4px;
-	content: "\f014";
-}
+	 font-family: 'icomoon';
+	 speak: none;
+	 font-style: normal;
+	 font-weight: normal;
+	 font-variant: normal;
+	 text-transform: none;
+	 line-height: 1;
+	 margin: 0 4px;
+	 content: "\f014";
+ }
 #play:before{
 	content: "\f04b";
 }
