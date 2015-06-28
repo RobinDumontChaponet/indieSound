@@ -4,10 +4,10 @@ require_once("UserDAO.class.php");
 
 class ProjectDAO {
 	public static function create(&$pers) {
-		if (get_class($proj)=="Project") {
+		if (get_class($pers)=="Project") {
 			try {
 				$req = SPDO::getInstance()->prepare("INSERT INTO `project`(`name`, `genre`, `owner`, `description`, `parent`, `lock`) VALUES (?,?,?,?,?,?)");
-				$req->execute(array($proj->getName(), $proj->getGenre(), $proj->getOwner(), $proj->getDescription(), $proj->getParent(), $proj->getLock() ));
+				$req->execute(array($pers->getName(), $pers->getGenre(), $pers->getOwner(), $pers->getDescription(), $pers->getParent(), $pers->getLock() ));
 				$pers->setId(SPDO::getInstance()->LastInsertId());
 				return $pers->getId();
 			} catch(PDOException $e) {
@@ -49,7 +49,7 @@ class ProjectDAO {
 			$lstObjet=array();
 			foreach ($lst as $proj) {
 				$owner = UserDAO::getById($proj['owner']);
-				
+
 				$lstObjet[] = new Project($proj['idProjet'], $proj['name'], /*$genre*/null, $owner, $proj['description'], $proj['parent'], $proj['locked']);
 			}
 			return $lstObjet;

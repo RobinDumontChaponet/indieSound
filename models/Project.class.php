@@ -3,10 +3,9 @@
 class Project {
 	//-------------------VARIABLES-------------------
 	private $id;
-	private $name; 
+	private $name;
 	private $genre;
 	private $owner;
-	private $version;
 	private $description;
 	private $parent;
 	private $lock;
@@ -55,10 +54,7 @@ class Project {
 
 	//-------------------SETTERS-------------------
 	public function setId($id) {
-		if(is_numeric($id) && $id >= 0)
-			$this->id = $id;
-		else
-			throw new Exception("Id personne invalide : ".$id);
+		$this->id = $id;
 	}
 	public function setName($name) {
 		$this->name = trim($name);
@@ -70,7 +66,7 @@ class Project {
 		$this->owner = $owner;
 	}
 	public function setDescription($description) {
-		$this->version = trim($description);
+		$this->description = trim($description);
 	}
 	public function setParent($parent) {
 		$this->parent = $parent;
@@ -78,7 +74,7 @@ class Project {
 	public function setLock($lock) {
 		$this->lock = $lock;
 	}
-	
+
 	//-------------------tostring-------------------
 	public function __toString() {
 		return "Id : ".$this->id." Nom du projet : ".$this->name." Genre : "

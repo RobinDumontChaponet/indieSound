@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.1.1
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Client :  localhost:8889
--- Généré le :  Dim 28 Juin 2015 à 01:37
--- Version du serveur :  5.5.42
--- Version de PHP :  5.6.7
+-- Client :  127.0.0.1
+-- Généré le :  Dim 28 Juin 2015 à 09:03
+-- Version du serveur :  5.6.17
+-- Version de PHP :  5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -26,12 +26,14 @@ SET time_zone = "+00:00";
 -- Structure de la table `auth`
 --
 
-CREATE TABLE `auth` (
-  `idRight` int(5) NOT NULL,
+CREATE TABLE IF NOT EXISTS `auth` (
+  `idRight` int(5) NOT NULL AUTO_INCREMENT,
   `user` int(5) NOT NULL,
   `readeable` tinyint(1) NOT NULL DEFAULT '1',
-  `writeable` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `writeable` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`idRight`),
+  KEY `user` (`user`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Contenu de la table `auth`
@@ -46,13 +48,16 @@ INSERT INTO `auth` (`idRight`, `user`, `readeable`, `writeable`) VALUES
 -- Structure de la table `comment`
 --
 
-CREATE TABLE `comment` (
-  `idComment` int(5) NOT NULL,
+CREATE TABLE IF NOT EXISTS `comment` (
+  `idComment` int(5) NOT NULL AUTO_INCREMENT,
   `author` int(5) NOT NULL,
   `value` varchar(300) NOT NULL,
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `version` int(8) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `version` int(8) NOT NULL,
+  PRIMARY KEY (`idComment`),
+  KEY `author` (`author`),
+  KEY `version` (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -60,10 +65,19 @@ CREATE TABLE `comment` (
 -- Structure de la table `genre`
 --
 
-CREATE TABLE `genre` (
-  `idGenre` int(5) NOT NULL,
-  `name` varchar(80) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `genre` (
+  `idGenre` int(5) NOT NULL AUTO_INCREMENT,
+  `name` varchar(80) NOT NULL,
+  PRIMARY KEY (`idGenre`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `genre`
+--
+
+INSERT INTO `genre` (`idGenre`, `name`) VALUES
+(1, 'Pop'),
+(2, 'Rock');
 
 -- --------------------------------------------------------
 
@@ -71,9 +85,12 @@ CREATE TABLE `genre` (
 -- Structure de la table `hasgenre`
 --
 
-CREATE TABLE `hasgenre` (
+CREATE TABLE IF NOT EXISTS `hasgenre` (
   `project` int(8) NOT NULL,
-  `genre` int(8) NOT NULL
+  `genre` int(8) NOT NULL,
+  PRIMARY KEY (`project`,`genre`),
+  KEY `project` (`project`),
+  KEY `project_2` (`project`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -82,21 +99,27 @@ CREATE TABLE `hasgenre` (
 -- Structure de la table `project`
 --
 
-CREATE TABLE `project` (
-  `idProjet` int(5) NOT NULL,
+CREATE TABLE IF NOT EXISTS `project` (
+  `idProjet` int(5) NOT NULL AUTO_INCREMENT,
   `name` varchar(80) NOT NULL,
+  `genre` varchar(50) NOT NULL,
   `owner` int(5) NOT NULL,
   `description` text NOT NULL,
   `parent` int(5) DEFAULT NULL,
-  `locked` tinyint(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `locked` tinyint(1) NOT NULL,
+  PRIMARY KEY (`idProjet`),
+  KEY `idProjet` (`idProjet`),
+  KEY `owner` (`owner`),
+  KEY `root` (`parent`),
+  KEY `project_ibfk_3` (`parent`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Contenu de la table `project`
 --
 
-INSERT INTO `project` (`idProjet`, `name`, `owner`, `description`, `parent`, `locked`) VALUES
-(2, 'Test', 1, 'Projet de test', NULL, 0);
+INSERT INTO `project` (`idProjet`, `name`, `genre`, `owner`, `description`, `parent`, `locked`) VALUES
+(2, 'Test', 'Pop', 1, 'Projet de test', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -104,13 +127,16 @@ INSERT INTO `project` (`idProjet`, `name`, `owner`, `description`, `parent`, `lo
 -- Structure de la table `sound`
 --
 
-CREATE TABLE `sound` (
-  `idSound` int(8) NOT NULL,
+CREATE TABLE IF NOT EXISTS `sound` (
+  `idSound` int(8) NOT NULL AUTO_INCREMENT,
   `pisteNumber` int(2) NOT NULL,
   `src` varchar(255) NOT NULL,
   `startTime` int(255) NOT NULL,
-  `project` int(8) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `project` int(8) NOT NULL,
+  PRIMARY KEY (`idSound`),
+  UNIQUE KEY `idSound` (`idSound`),
+  KEY `project` (`project`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -118,14 +144,15 @@ CREATE TABLE `sound` (
 -- Structure de la table `user`
 --
 
-CREATE TABLE `user` (
-  `idUser` int(5) NOT NULL,
+CREATE TABLE IF NOT EXISTS `user` (
+  `idUser` int(5) NOT NULL AUTO_INCREMENT,
   `login` varchar(28) NOT NULL,
   `password` varchar(42) NOT NULL,
   `mail` varchar(80) NOT NULL,
   `lastName` varchar(20) NOT NULL,
-  `firstName` varchar(20) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `firstName` varchar(20) NOT NULL,
+  PRIMARY KEY (`idUser`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Contenu de la table `user`
@@ -141,119 +168,18 @@ INSERT INTO `user` (`idUser`, `login`, `password`, `mail`, `lastName`, `firstNam
 -- Structure de la table `version`
 --
 
-CREATE TABLE `version` (
-  `idVersion` int(5) NOT NULL,
+CREATE TABLE IF NOT EXISTS `version` (
+  `idVersion` int(5) NOT NULL AUTO_INCREMENT,
   `project` int(8) NOT NULL,
   `name` varchar(42) NOT NULL,
   `user` int(8) NOT NULL,
   `views` int(10) NOT NULL,
   `duration` int(6) NOT NULL,
-  `description` varchar(80) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `description` varchar(80) NOT NULL,
+  PRIMARY KEY (`idVersion`),
+  KEY `project` (`project`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
---
--- Index pour les tables exportées
---
-
---
--- Index pour la table `auth`
---
-ALTER TABLE `auth`
-  ADD PRIMARY KEY (`idRight`),
-  ADD KEY `user` (`user`);
-
---
--- Index pour la table `comment`
---
-ALTER TABLE `comment`
-  ADD PRIMARY KEY (`idComment`),
-  ADD KEY `author` (`author`),
-  ADD KEY `version` (`version`);
-
---
--- Index pour la table `genre`
---
-ALTER TABLE `genre`
-  ADD PRIMARY KEY (`idGenre`);
-
---
--- Index pour la table `hasgenre`
---
-ALTER TABLE `hasgenre`
-  ADD PRIMARY KEY (`project`,`genre`),
-  ADD KEY `project` (`project`),
-  ADD KEY `project_2` (`project`);
-
---
--- Index pour la table `project`
---
-ALTER TABLE `project`
-  ADD PRIMARY KEY (`idProjet`),
-  ADD KEY `idProjet` (`idProjet`),
-  ADD KEY `owner` (`owner`),
-  ADD KEY `root` (`parent`),
-  ADD KEY `project_ibfk_3` (`parent`);
-
---
--- Index pour la table `sound`
---
-ALTER TABLE `sound`
-  ADD PRIMARY KEY (`idSound`),
-  ADD UNIQUE KEY `idSound` (`idSound`),
-  ADD KEY `project` (`project`);
-
---
--- Index pour la table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`idUser`);
-
---
--- Index pour la table `version`
---
-ALTER TABLE `version`
-  ADD PRIMARY KEY (`idVersion`),
-  ADD KEY `project` (`project`);
-
---
--- AUTO_INCREMENT pour les tables exportées
---
-
---
--- AUTO_INCREMENT pour la table `auth`
---
-ALTER TABLE `auth`
-  MODIFY `idRight` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT pour la table `comment`
---
-ALTER TABLE `comment`
-  MODIFY `idComment` int(5) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `genre`
---
-ALTER TABLE `genre`
-  MODIFY `idGenre` int(5) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `project`
---
-ALTER TABLE `project`
-  MODIFY `idProjet` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT pour la table `sound`
---
-ALTER TABLE `sound`
-  MODIFY `idSound` int(8) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `user`
---
-ALTER TABLE `user`
-  MODIFY `idUser` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT pour la table `version`
---
-ALTER TABLE `version`
-  MODIFY `idVersion` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- Contraintes pour les tables exportées
 --
