@@ -31,6 +31,32 @@
 				</div>
 
 				<div class= "SocialSong">
+					<button id="heart"></button>
+					<button id="facebook"></button>
+					<button id="twitter"></button>
+					<button id="google-plus"></button>
+				</div>
+
+            </li>
+
+            <li class="soundList__item">
+				<div class= "titleSong"> 
+					<p class="title"><button id="music">Instrumental Intro Basic Rock </button></p>
+					<p class="author"><button id="user">Mickaël Berko</button></p>
+				</div>
+
+				<div class= "ImgSong">
+					<img src=""/>
+
+				</div>
+
+				<div class="ControlSong">
+					<button id="rewind"></button>
+					<button id="play"></button>
+					<button id="volume-up"></button>
+				</div>
+
+				<div class= "SocialSong">
 					<button id="heart-o"></button>
 					<button id="facebook"></button>
 					<button id="twitter"></button>
@@ -57,33 +83,7 @@
 				</div>
 
 				<div class= "SocialSong">
-					<button id="heart"></button>
-					<button id="facebook"></button>
-					<button id="twitter"></button>
-					<button id="google-plus"></button>
-				</div>
-
-            </li>
-
-            <li class="soundList__item">
-				<div class= "titleSong"> 
-					<p class="title"><button id="music">Instrumental Intro Basic Rock </button></p>
-					<p class="author"><button id="user">Mickaël Berko</button></p>
-				</div>
-
-				<div class= "ImgSong">
-					<img src=""/>
-
-				</div>
-
-				<div class="ControlSong">
-					<button id="rewind"></button>
-					<button id="play"></button>
-					<button id="volume-up"></button>
-				</div>
-
-				<div class= "SocialSong">
-					<button id="heart"></button>
+					<button id="heart-o"></button>
 					<button id="facebook"></button>
 					<button id="twitter"></button>
 					<button id="google-plus"></button>
