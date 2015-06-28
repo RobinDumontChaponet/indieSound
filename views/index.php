@@ -1,4 +1,4 @@
-<!--meta title="index" css="style/project.css" js="script/blip.min.js" js="script/project.js"-->
+<!--meta title="index" css="style/index.css" js="script/blip.min.js" js="script/project.js"-->
 <div id="content">
 
 	<section id="teaser">
