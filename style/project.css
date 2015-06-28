@@ -97,6 +97,7 @@ dt:nth-child(4n), dt:nth-child(4n+1) {
 }
 dd {
 	background: #bebfc1;
+	white-space: nowrap;
 }
 dd:nth-child(4n+1), dd:nth-child(4n+2) {
 	background: #9ea2a6;
@@ -108,10 +109,16 @@ dt button {
 	border: none;
 	box-shadow: none;
 }
-<<<<<<< HEAD
-dt button:before, #play:before, #rewind:before, #volume-up:before,#heart-o:before,
- #heart:before, #facebook:before, #twitter:before, #google-plus:before, #music:before, #user:before
-{
+dt button:hover {
+	background: none;
+	box-shadow: inset 0 0 8px grey;
+	-webkit-transform: scale(.9);
+	-moz-transform: scale(.9);
+	-ms-transform: scale(.9);
+	-o-transform: scale(.9);
+	transform: scale(.9);
+}
+dt button:before, #play:before, #rewind:before {
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
@@ -121,28 +128,7 @@ dt button:before, #play:before, #rewind:before, #volume-up:before,#heart-o:befor
 	line-height: 1;
 	margin: 0 4px;
 	content: "\f014";
-=======
-dt button:hover {
-	background: none;
-	box-shadow: inset 0 0 8px grey;
-	-webkit-transform: scale(.9);
-	-moz-transform: scale(.9);
-	-ms-transform: scale(.9);
-	-o-transform: scale(.9);
-	transform: scale(.9);
->>>>>>> origin/master
 }
-dt button:before, #play:before, #rewind:before {
-	 font-family: 'icomoon';
-	 speak: none;
-	 font-style: normal;
-	 font-weight: normal;
-	 font-variant: normal;
-	 text-transform: none;
-	 line-height: 1;
-	 margin: 0 4px;
-	 content: "\f014";
- }
 #play:before{
 	content: "\f04b";
 }
@@ -152,43 +138,6 @@ dt button:before, #play:before, #rewind:before {
 #rewind:before{
 	content: "\f048";
 }
-#volume-up:before{
-	content: "\f028";
-}
-#heart-o:before{
-	content: "\f08a";
-}
-#heart:before{
-	content: "\f004";
-}
-#facebook:before{
-	content: "\f082";
-}
-#twitter:before{
-	content: "\f081";
-}	
-#google-plus:before{
-	content: "\f0d4";
-}
-#music:before{
-	content: "\f001";
-}
-#user:before{
-	content: "\f007";
-}
-
 dt button span, #play span, #pause span, #rewind span{
 	display: none;
 }
-/*
-#ImgSong {
-	position: absolute;
-	float: left;
-}
-#titleSong {
-	position: relative;
-	float: center;
-}
-*/
-
-
