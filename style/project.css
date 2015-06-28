@@ -71,7 +71,9 @@ dt button {
 	border: none;
 	box-shadow: none;
 }
-dt button:before, #play:before, #rewind:before {
+dt button:before, #play:before, #rewind:before, #volume-up:before,#heart-o:before,
+ #heart:before, #facebook:before, #twitter:before, #google-plus:before, #music:before, #user:before
+{
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
@@ -91,6 +93,43 @@ dt button:before, #play:before, #rewind:before {
 #rewind:before{
 	content: "\f048";
 }
+#volume-up:before{
+	content: "\f028";
+}
+#heart-o:before{
+	content: "\f08a";
+}
+#heart:before{
+	content: "\f004";
+}
+#facebook:before{
+	content: "\f082";
+}
+#twitter:before{
+	content: "\f081";
+}	
+#google-plus:before{
+	content: "\f0d4";
+}
+#music:before{
+	content: "\f001";
+}
+#user:before{
+	content: "\f007";
+}
+
 dt button span, #play span, #pause span, #rewind span{
 	display: none;
 }
+/*
+#ImgSong {
+	position: absolute;
+	float: left;
+}
+#titleSong {
+	position: relative;
+	float: center;
+}
+*/
+
+
