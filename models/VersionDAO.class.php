@@ -82,7 +82,7 @@ class VersionDAO {
 		}
 		return $version;
 	}
-	public static function getByNbViews() {
+	public static function getMostViews() {
 		$versions=array();
 		try{
 			$connect=SPDO::getInstance();
