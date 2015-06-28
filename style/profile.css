@@ -1,0 +1,19 @@
+
+label {
+	margin-top: 1em;
+	font-weight: bold; 
+}
+figure, form{
+	display:inline-block;
+}
+form label, form button, form input [type="submit"] {
+	display: block;
+	text-align: center;
+}
+#content {
+	text-align:center;
+}
+figure img {
+	padding-right: 10px;
+	width:100%;
+}
