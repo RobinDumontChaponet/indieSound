@@ -4,7 +4,7 @@ class Sound {
 	private $id;
 	private $src;
 	private $notes;
-	private $idProject // Because Fuck You_
+	private $idProject; // Because Fuck You_
 
 	public function __construct ($id='', $src='', $notes=null, $idProject) {
 		$this->setId($id);

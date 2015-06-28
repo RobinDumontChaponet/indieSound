@@ -1,6 +1,7 @@
 <?php
 
 require_once("Note.class.php");
+require_once("SoundDAO.class.php");
 
 class NoteDAO {
 
@@ -10,83 +11,83 @@ class NoteDAO {
 				$connect=SPDO::getInstance();
 				$statement = $connect->prepare('INSERT INTO note (sound, startTime) VALUES (?, ?)');
 
-				$statement->bindParam(1, $object->getSrc());
+				$statement->bindParam(1, $object->getSound()->getId());
+				$statement->bindParam(2, $object->getStartTime());
 				$statement->execute();
-				} else {
-					return false;
-				}
 				return $connect->lastInsertId();
 			} catch (PDOException $e) {
-				die('Error create user!: ' . $e->getMessage() . '<br/>');
+				die('Error create Note!: ' . $e->getMessage() . '<br/>');
 			}
-		}
+		} else
+			return false;
 	}
 
 	public static function update ($object) {
-		if (get_class( $object ) == "Sound") {
+		if (get_class( $object ) == "Note") {
 			try {
 				$connect=SPDO::getInstance();
-				$statement = $connect->prepare('UPDATE sound SET src=? WHERE idSound=?');
+				$statement = $connect->prepare('UPDATE note SET src=? WHERE idNote=?');
 				$statement->bindParam(1, $object->getSrc();
 				$statement->bindParam(2, $object->getId());
 				$statement->execute();
 
 				return $connect->lastInsertId();
 			} catch (PDOException $e) {
-				die('Error update sound!: ' . $e->getMessage() . '<br/>');
+				die('Error update Note!: ' . $e->getMessage() . '<br/>');
 			}
 		}
 	}
 
 	public static function delete ($object) {
-		if (get_class( $object ) == "Sound") {
+		if (get_class( $object ) == "Note") {
 			try {
 				$connect=SPDO::getInstance();
-				$statement = $connect->prepare('DELETE FROM sound WHERE idSound=?');
+				$statement = $connect->prepare('DELETE FROM note WHERE idNote=?');
 				$statement->bindParam(1, $object->getId());
 				$statement->execute();
 			} catch (PDOException $e) {
-				die('Error delete sound!: ' . $e->getMessage() . '<br/>');
+				die('Error delete note!: ' . $e->getMessage() . '<br/>');
 			}
 		}
 	}
 
 	public static function getAll () {
-		$sound = array();
+		$notes = array();
 		try {
 			$connect=SPDO::getInstance();
-			$statement = $connect->prepare('SELECT * FROM sound');
+			$statement = $connect->prepare('SELECT * FROM note');
 
 			$statement->execute();
 
 			while ($rs = $statement->fetch(PDO::FETCH_OBJ)) {
-				$notes = NoteDAO::getBySoundId($rs->idSound);
+				$sound = SoundDAO::getById($rs->sound);
 
-				$user[]=new Sound($rs->idSound, $rs->src, $notes);
+				$notes[]=new Note($rs->idNote, $sound, $rs->startTime);
 			}
 		} catch (PDOException $e) {
 			die('Error! getAll:' . $e->getMessage() . '<br/>');
 		}
-		return $sound;
+		return $notes;
 	}
 
 	public static function getById ($id) {
-			$sound = null;
+			$note = null;
 			try {
 				$connect=SPDO::getInstance();
-				$statement = $connect->prepare('SELECT * FROM sound where idSound=?');
+				$statement = $connect->prepare('SELECT * FROM note where idNote=?');
 				$statement->bindParam(1, $id);
 				$statement->execute();
 
 				if($rs = $statement->fetch(PDO::FETCH_OBJ)) {
-					$notes = NoteDAO::getBySoundIdAndProjectId($rs->idSound, $rs->project);
+					$sound = SoundDAO::getById($rs->sound);
 
-					$user=new Sound($rs->idSound, $rs->src, $notes, $rs->project);
+					$note=new Note($rs->idNote, $sound, $rs->startTime);
 				}
 			} catch (PDOException $e) {
 				die('Error! getById:' . $e->getMessage() . '<br/>');
 			}
-			return $sound;
+			return $note;
 	}
 }
+
 ?>
