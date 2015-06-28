@@ -4,7 +4,9 @@
     border: none;
     box-shadow: none;
 }
-#content button:before {
+dt button:before, #play:before, #rewind:before, #volume-up:before,#heart-o:before,
+#heart:before, #facebook:before, #twitter:before, #google-plus:before, #music:before, #user:before
+{
     font-family: 'icomoon';
     font-style: normal;
     font-weight: normal;
@@ -12,5 +14,18 @@
     text-transform: none;
     line-height: 1;
     margin: 0 4px;
-    content: "\f09a";
+    content: "\f014";
+
+}
+#heart:before{
+    content: "\f004";
+}
+#facebook:before{
+    content: "\f082";
+}
+#twitter:before{
+    content: "\f081";
+}
+#google-plus:before{
+    content: "\f0d4";
 }
