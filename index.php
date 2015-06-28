@@ -1,15 +1,10 @@
 <?php
 
-include_once('conf.inc.php');
-include_once('SPDO.class.php');
+include('conf.inc.php');
+include('SPDO.class.php');
 
 session_start();
-/*
-if (!isset($_SESSION['user']) || $_SESSION['user']=='') {
-	header ('Location: '.constant('SELF').'/connection.php');
-	exit();
-}
-*/
+
 function get_include_contents($filename) {
 	if (is_file($filename)) {
 		ob_start();

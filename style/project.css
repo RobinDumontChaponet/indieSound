@@ -4,35 +4,84 @@
 	height: 100%;
 	background: #fff;
 	z-index: 100;
+
+	margin: 0 -10%;
+	min-width: 100%;
 }
 
 #content aside {
-	width: 20%;
-	padding: 2em 0;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+	word-break: loose;
+	word-wrap: break-word;
+	text-overflow: ellipsis;
 	overflow: hidden;
 	overflow-y: auto;
 	height: 100%;
-	float: left;
+
+	width: 18%;
+	max-width: 300px;
+	min-width: 160px;
+	position: absolute;
+	top: 0;
+	z-index: 0;
+	padding: 12px 0;
+	-webkit-overflow-scrolling: touch;
+	-ms-overflow-style: -ms-autohiding-scrollbar;
+}
+aside#versions {
+	/*border-right: 1px solid lightgrey;*/
+	left: 0;
+	padding-left: 0;
+}
+aside#sounds {
+	/*border-left: 1px solid lightgrey;*/
+	right: 0;
+	height: 100%;
 }
 
 #playground {
-	position: absolute;
-	margin: 0 0 0 22%;
-	width: 76%;
-	padding: 2em 2.875em;
-	height: auto;
-	text-align: justify;
-	line-height: 1.7857;
-	background: #EDEDED;
+	position: relative;
+	margin: 0 18%;
+	z-index: 50;
+	min-width: 500px;
+	-webkit-transition: margin .6s ease-in;
+	-moz-transition: margin .6s ease-in;
+	-ms-transition: margin .6s ease-in;
+	-o-transition: margin .6s ease-in;
+	transition: margin .6s ease-in;
+	background: #eeebeb;
+	box-shadow: 0 0 4px lightgrey;
 }
 
 #playground dd div {
 	display: inline-block;
 	width: 100px;
 	height: 40px;
-	background: red;
+	background: grey;
 	border: 1px solid lightgrey;
 	border-radius: 8px;
+
+	cursor: move;
+}
+
+dt button {
+	position: relative;
+	background: none;
+	border: none;
+	box-shadow: none;
+}
+dt button:before {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	margin: 0 4px;
+	content: "\f014";
+}
+dt button span {
+	display: none;
 }
