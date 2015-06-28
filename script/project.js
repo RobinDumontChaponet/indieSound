@@ -1,10 +1,10 @@
 var playing=false;
 
-blip.sampleLoader().samples({
+/*blip.sampleLoader().samples({
 	'glass': 'https://cdn.rawgit.com/jshanley/blip/b2d1594c94a63af9bebab2730ec262301d17b360/sounds/glass.wav',
 	'plastic': 'https://cdn.rawgit.com/jshanley/blip/b2d1594c94a63af9bebab2730ec262301d17b360/sounds/plastic.wav',
 	'can': 'https://cdn.rawgit.com/jshanley/blip/b2d1594c94a63af9bebab2730ec262301d17b360/sounds/cokecan.wav'
-}).done(loaded).load();
+}).done(loaded).load();*/
 
 
 function loaded() {

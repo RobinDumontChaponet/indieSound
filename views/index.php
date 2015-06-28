@@ -12,19 +12,19 @@
 	<section>
 		<h2>Morceaux du moment</h2>
 		<ul>
-
             <li class="soundList__item">
 				<div class= "titleSong">
-					<p class="title"><button id="music">Soldier </button></p>
-					<p class="author"><button id="user">Michael Berko</button></p>
+					<p class="author"><span style="font-style: italic">par </span>Michael Berko</p>
+					<p class="title">Soldier</p>
 				</div>
 
-				<div class= "ImgSong">
 					<img src="data/covers/mikaB.jpg"/>
-				</div>
-<audio id="son1">
-	<source src="data/sounds/soldier.mp3" type="audio/mp3"/>
-</audio>
+				<audio id="son1">
+					<source src="data/sounds/soldier.mp3" type="audio/mp3"/>
+				</audio>
+
+
+
 				<div class="ControlSong">
 					<button class="rewind"></button>
 					<button class="play" id="play"></button>
@@ -41,14 +41,11 @@
 
             <li class="soundList__item">
 				<div class= "titleSong">
-					<p class="title"><button class="music">Novo Assassino </button></p>
-					<p class="author"><button class="user">Tigre Demon</button></p>
+					<p class="author"><span style="font-style: italic">par </span>Tigre Demon</p>
+					<p class="title">Novo Assassino</p>
 				</div>
 
-				<div class= "ImgSong">
 					<img src="data/covers/TigreD.jpg"/>
-
-				</div>
 
 				<div class="ControlSong">
 					<button class="rewind"></button>
@@ -67,14 +64,11 @@
 
             <li class="soundList__item">
 				<div class= "titleSong">
-					<p class="title"><button class="music">Ocean I </button></p>
-					<p class="author"><button class="user">Michael Berko</button></p>
+					<p class="author"><span style="font-style: italic">par </span>Michael Berko</p>
+					<p class="title">Ocean I</p>
 				</div>
 
-				<div class= "ImgSong">
 					<img src="data/covers/mikaB2.jpg"/>
-
-				</div>
 
 				<div class="ControlSong">
 					<button class="rewind"></button>

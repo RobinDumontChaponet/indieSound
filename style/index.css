@@ -2,7 +2,7 @@
 	background: none;
 }
 #teaser p {
-	color: rgba(255, 255, 255, .63);
+	color: rgba(255, 255, 255, .9);
 	font-size: 28px;
 	font-weight: bold;
 	text-align: center;
@@ -73,4 +73,21 @@ dt button:before, .play:before, .rewind:before {
 
 dt button span, .play span, .pause span, .rewind span{
 	display: none;
+}
+
+p.author {
+	float: right;
+}
+
+.ControlSong, .SocialSong {
+	display: inline-block;
+	position: relative;
+	top: -90px;
+}
+
+figure {
+
+}
+img {
+	max-height: 200px;
 }
