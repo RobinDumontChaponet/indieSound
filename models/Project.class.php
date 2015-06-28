@@ -40,7 +40,7 @@ class Project {
 	}
 
 	public function getDescription() {
-		return $this->parent;
+		return $this->description;
 	}
 
 	public function getParent() {

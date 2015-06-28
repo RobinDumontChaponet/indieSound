@@ -3,7 +3,7 @@
 	<form method="post" action="">
 		<input type="text" name="projectName" id="projectName" placeholder="Nom du projet" value='<?php if($_POST) {echo $_POST['projectName'];}?>' />
 		<select name="genre">
-			<option value="null"></option>
+			<option></option>
 			<?php foreach ($genres as $genre) {
 				echo '<option value="'.$genre->getId().'">' .$genre->getName(). '</option>';
 			} ?>

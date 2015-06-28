@@ -6,7 +6,7 @@ class ProjectDAO {
 	public static function create(&$pers) {
 		if (get_class($pers)=="Project") {
 			try {
-				$req = SPDO::getInstance()->prepare("INSERT INTO `project`(`name`, `genre`, `owner`, `description`, `parent`, `lock`) VALUES (?,?,?,?,?,?)");
+				$req = SPDO::getInstance()->prepare("INSERT INTO `project`(`name`, `genre`, `owner`, `description`, `parent`, `locked`) VALUES (?,?,?,?,?,?)");
 				$req->execute(array($pers->getName(), $pers->getGenre(), $pers->getOwner(), $pers->getDescription(), $pers->getParent(), $pers->getLock() ));
 				$pers->setId(SPDO::getInstance()->LastInsertId());
 				return $pers->getId();
