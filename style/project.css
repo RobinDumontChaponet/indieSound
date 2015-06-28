@@ -1,3 +1,8 @@
+header {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
 #wrapper > #content {
 	position: absolute;
 	width: 100%;
@@ -50,8 +55,15 @@ aside#sounds {
 	-ms-transition: margin .6s ease-in;
 	-o-transition: margin .6s ease-in;
 	transition: margin .6s ease-in;
-	background: #eeebeb;
+	background: #efefef;
 	box-shadow: 0 0 4px lightgrey;
+	overflow: auto;
+}
+
+#timeline {
+	width: 100%;
+	height: 20px;
+
 }
 
 #playground dd div {
@@ -61,8 +73,33 @@ aside#sounds {
 	background: grey;
 	border: 1px solid lightgrey;
 	border-radius: 8px;
-
+	box-shadow: 0 1px 4px rgba(176, 176, 189, .9);
+	padding: 4px 8px;
 	cursor: move;
+}
+
+dt, dd {
+	height: 40px;
+	border-bottom: 1px solid #847c7c;
+	position: relative;
+}
+dt {
+	width: 200px;
+	background: #a1a2b1;
+	float: left;
+	border-radius: 4px;
+	z-index: 20;
+	box-shadow: 0 1px 2px rgba(184, 184, 191, .8);
+	padding: 4px 8px 4px 16px;
+}
+dt:nth-child(4n), dt:nth-child(4n+1) {
+	background: #b6c3d0;
+}
+dd {
+	background: #bebfc1;
+}
+dd:nth-child(4n+1), dd:nth-child(4n+2) {
+	background: #9ea2a6;
 }
 
 dt button {
@@ -70,6 +107,15 @@ dt button {
 	background: none;
 	border: none;
 	box-shadow: none;
+}
+dt button:hover {
+	background: none;
+	box-shadow: inset 0 0 8px grey;
+	-webkit-transform: scale(.9);
+	-moz-transform: scale(.9);
+	-ms-transform: scale(.9);
+	-o-transform: scale(.9);
+	transform: scale(.9);
 }
 dt button:before, #play:before, #rewind:before {
 	font-family: 'icomoon';
@@ -85,7 +131,7 @@ dt button:before, #play:before, #rewind:before {
 #play:before{
 	content: "\f04b";
 }
-.pause:before{
+#play.pause:before{
 	content: "\f04c";
 }
 #rewind:before{

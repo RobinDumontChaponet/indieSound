@@ -24,7 +24,7 @@ label {
 	top: -2px;
 	padding: 0 5px 0 0;
 }
-label:after, dt:after, h4:after {
+label:after, h4:after {
 	padding-left: 5px;
 	content: ":";
 }

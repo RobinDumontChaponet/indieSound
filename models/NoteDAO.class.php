@@ -109,7 +109,6 @@ class NoteDAO {
 		}
 		return $notes;
 	}
-
 }
 
 ?>
