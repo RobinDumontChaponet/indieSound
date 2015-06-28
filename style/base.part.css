@@ -35,6 +35,7 @@ body {
 	min-width:474px;
 	margin:0 auto;
 	background: url("images/background.jpg") fixed;
+	background-size: cover;
 }
 
 a, a:active, a:hover, a:visited {
