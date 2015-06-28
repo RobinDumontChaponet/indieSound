@@ -1,10 +1,9 @@
 <!--meta title="" css="style/project.css" js="script/blip.min.js" js="script/project.js"-->
 
 <div id="content">
-	<button id="play">Play</button>
-	<button id="pause">Pause</button>
-	<button id="rewind">Rewind</button>
-	<aside id="versions">
+	<button id="rewind"><span>Rembobiner</span></button>
+	<button id="play"><span>Lecture</span></button>
+		<aside id="versions">
 		<h2>Versions</h2>
 		<button id="orderByLikes"></button>
 		<button id="orderByDate"></button>

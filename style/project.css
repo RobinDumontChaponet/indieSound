@@ -71,7 +71,7 @@ dt button {
 	border: none;
 	box-shadow: none;
 }
-dt button:before {
+dt button:before, #play:before, #rewind:before {
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
@@ -82,6 +82,15 @@ dt button:before {
 	margin: 0 4px;
 	content: "\f014";
 }
-dt button span {
+#play:before{
+	content: "\f04b";
+}
+.pause:before{
+	content: "\f04c";
+}
+#rewind:before{
+	content: "\f048";
+}
+dt button span, #play span, #pause span, #rewind span{
 	display: none;
 }
