@@ -93,8 +93,10 @@ class NoteDAO {
 		$notes = array();
 		try {
 			$connect=SPDO::getInstance();
-			$statement = $connect->prepare('SELECT * FROM note where sound=? AND ...');
+			$statement = $connect->prepare('SELECT * FROM note WHERE sound=? AND (SELECT project FROM sound WHERE idSound=?)=?');
 			$statement->bindParam(1, $soundId);
+			$statement->bindParam(2, $soundId);
+			$statement->bindParam(3, $projectId);
 			$statement->execute();
 
 			while ($rs = $statement->fetch(PDO::FETCH_OBJ)) {
