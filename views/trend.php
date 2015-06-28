@@ -13,7 +13,7 @@ include_once MODELS_INC . 'VersionDAO.class.php';
                 <th>Titre</th>
             </tr>
             <?php
-            $list=VersionDAO::getByNbViews();
+            $list=VersionDAO::getMostViews();
             $rang=1;
             foreach($list as $trend){
 
