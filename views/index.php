@@ -20,7 +20,7 @@
 				</div>
 
 				<div class= "ImgSong">
-					<img src=""/>
+					<img src="data/covers/mikaB.jpg"/>
 
 				</div>
 
@@ -41,12 +41,12 @@
 
             <li class="soundList__item">
 				<div class= "titleSong"> 
-					<p class="title"><button id="music">Instrumental Intro Basic Rock </button></p>
-					<p class="author"><button id="user">Mickaël Berko</button></p>
+					<p class="title"><button id="music">Novo Assassino </button></p>
+					<p class="author"><button id="user">Tigre Demon</button></p>
 				</div>
 
 				<div class= "ImgSong">
-					<img src=""/>
+					<img src="data/covers/TigreD.jpg"/>
 
 				</div>
 
@@ -67,12 +67,12 @@
 
             <li class="soundList__item">
 				<div class= "titleSong"> 
-					<p class="title"><button id="music">Instrumental Intro Basic Rock </button></p>
+					<p class="title"><button id="music">Heavy Metal impro </button></p>
 					<p class="author"><button id="user">Mickaël Berko</button></p>
 				</div>
 
 				<div class= "ImgSong">
-					<img src=""/>
+					<img src="data/covers/mikaB2.jpg"/>
 
 				</div>
 
