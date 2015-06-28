@@ -41,17 +41,17 @@ class ProjectDAO {
 			die ('Update : paramètre de type projet demandé : '.$proj);
 		}
 	}
-	
+
 	public static function getAll() {
 		try {
 			$req=SPDO::getInstance()->query("SELECT `idProjet`, `name`, `owner`, `description`, `parent`, `locked` FROM `project` ORDER BY name");
 			$lst=$req->fetchAll();
 			$lstObjet=array();
-			foreach ($lst as $proj)
+			foreach ($lst as $proj) {
 				$owner = UserDAO::getById($proj['owner']);
-
+				
 				$lstObjet[] = new Project($proj['idProjet'], $proj['name'], /*$genre*/null, $owner, $proj['description'], $proj['parent'], $proj['locked']);
-
+			}
 			return $lstObjet;
 		} catch(PDOException $e) {
 			die('error get all project '.$e->getMessage().'<br>');
