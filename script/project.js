@@ -1,3 +1,5 @@
+var playing=false;
+
 blip.sampleLoader().samples({
 	'glass': 'https://cdn.rawgit.com/jshanley/blip/b2d1594c94a63af9bebab2730ec262301d17b360/sounds/glass.wav',
 	'plastic': 'https://cdn.rawgit.com/jshanley/blip/b2d1594c94a63af9bebab2730ec262301d17b360/sounds/plastic.wav',
@@ -6,6 +8,12 @@ blip.sampleLoader().samples({
 
 
 function loaded() {
+	var sounds = [];
+
+/*	for(var i=0, l=json['sounds'].length; i<l; i++) {
+
+*/	}
+
 	var glass = blip.clip().sample('glass');
 	var plastic = blip.clip().sample('plastic');
 	var can = blip.clip().sample('can');
@@ -23,10 +31,15 @@ function loaded() {
 
 	/* click events */
 	document.getElementById('play').addEventListener('click', function () {
-		loop.start();
-	});
-	document.getElementById('pause').addEventListener('click', function () {
-		loop.stop();
+		if(playing) {
+			loop.stop();
+			this.classList.remove('pause');
+			playing=false;
+		} else {
+			loop.start();
+			this.classList.add('pause');
+			playing=true;
+		}
 	});
 	document.getElementById('rewind').addEventListener('click', function () {
 		loop.reset();

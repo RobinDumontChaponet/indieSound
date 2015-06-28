@@ -18,12 +18,13 @@
 		</nav>
 	</aside>
 	<section id="playground">
+		<nav id="timeline"></nav>
 		<dl>
 			<dt>Piste 1<button class="deletePiste"><span>Supprimer</span></button></dt>
 			<dd><div data-time="0" data-length="1">son1</div><div data-time="2" data-length="2">son2</div></dd>
 			<dt>Piste 2<button class="deletePiste"><span>Supprimer</span></button></dt>
 			<dd><div data-time="1" data-length="1">son1</div><div data-time="4" data-length="3">son2</div></dd>
-			<dt>+ ajouter une piste</dt>
+			<dt><button id="addTrack">ajouter une piste</button></dt>
 			<dd></dd>
 		</dl>
 	</section>
