@@ -27,7 +27,7 @@ class SoundDAO {
 			try {
 				$connect=SPDO::getInstance();
 				$statement = $connect->prepare('UPDATE sound SET src=? WHERE idSound=?');
-				$statement->bindParam(1, $object->getSrc();
+				$statement->bindParam(1, $object->getSrc());
 				$statement->bindParam(2, $object->getId());
 				$statement->execute();
 

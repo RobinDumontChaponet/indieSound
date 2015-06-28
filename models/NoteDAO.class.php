@@ -27,7 +27,7 @@ class NoteDAO {
 			try {
 				$connect=SPDO::getInstance();
 				$statement = $connect->prepare('UPDATE note SET src=? WHERE idNote=?');
-				$statement->bindParam(1, $object->getSrc();
+				$statement->bindParam(1, $object->getSrc());
 				$statement->bindParam(2, $object->getId());
 				$statement->execute();
 
