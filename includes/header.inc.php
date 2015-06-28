@@ -2,7 +2,12 @@
 	<h1><a href="<?= SELF ?>"><span>IndieSound</span></a></h1>
 	<nav>
 		<ul>
-			<li<?= ($_GET['requ']=='all')?' class="active" ':'' ?>><a href="all"><span>Tous les morceaux</span></a></li>
+			<li<?= ($_GET['requ']=='all')?' class="active" ':'' ?>><a href="all" ><span>Tous les morceaux</span></a>
+				<ul>
+					<li><a href="#">Mes morceaux</a></li>
+					<li><a href="trend">Tendance actuelles</a></li>
+				</ul>
+			</li>
 			<li<?= ($_GET['requ']=='new')?' class="active" ':'' ?>><a href="create"><span>Nouveau projet</span></a></li>
 			<li id="searchLi"><a href="#"><span>Recherche</span></a>
 				<form name="search">
