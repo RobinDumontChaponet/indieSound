@@ -2,12 +2,12 @@
 <div id="content">
 	<figure>
 		<?php if(is_file('data/profiles/'.$user->getId().'.png')){
-			echo '<img width="190" height="230" id="set" src="data/profiles/'.$user->getId().'.png">';
+			echo '<img width="230" height="230" id="set" src="data/profiles/'.$user->getId().'.png">';
 		} else {
-			echo '<img width="190" height="230" id="unset" src="data/profiles/unset.png">';
+			echo '<img width="230" height="230" id="unset" src="data/profiles/unset.png">';
 		}
 		?>
-	</figure>	
+	</figure>
 	<form method="post">
 		<?= $login; ?>
 		<label for="mail">email</label>
@@ -17,5 +17,5 @@
 		<label for="firstname">Prénom</label>
 		<input type="text" name="firstName" value="<?php if($firstName == "")echo ""; else echo "$firstName"; ?>" /></br>
 		<input type="submit" value="enregistrer"/>
-	</form>	
+	</form>
 </div>
