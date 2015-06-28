@@ -1,6 +1,6 @@
 <?php
 include_once MODELS_INC.'Version.class.php';
-include_once MODELS_INC.'HasParticipatedDAO.php';
+include_once MODELS_INC.'HasParticipatedDAO.class.php';
 class VersionDAO {
 	public static function create (&$version) {
 		if (get_class( $version ) == "Version") {

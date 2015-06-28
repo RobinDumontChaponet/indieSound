@@ -1,0 +1,17 @@
+#content button {
+	position: relative;
+	background: none;
+	border: none;
+	box-shadow: none;
+}
+#content button:before {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	margin: 0 4px;
+	content: "\f04b";
+}

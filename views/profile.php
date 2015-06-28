@@ -1,5 +1,13 @@
 <!--meta title="Profile"-->
 <div id="content">
+	<figure>
+		<?php if(is_file('data/profiles/'.$user->getId().'.png')){
+			echo '<img src="data/profiles/'.$user->getId().'.png">';
+		} else {
+			echo '<img src="data/profiles/unset.png">';
+		}
+		?>
+	</figure>	
 	<form method="post">
 		<dl>
 			<dt>login</dt>

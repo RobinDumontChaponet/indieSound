@@ -1,14 +1,14 @@
-<!--meta title="trend" css="" js=""-->
+<!--meta title="trend" css="style/trend.css" js=""-->
 <?php
 include_once MODELS_INC . 'VersionDAO.class.php';
 ?>
 <div id="content">
     <section id="trend">
+        <h1>Les sons à la mode</h1>
         <table>
-            <caption>Son a la mode</caption>
             <tr>
                 <th>Rang</th>
-                <th>Bouton lecture</th>
+                <th>&nbsp;</th>
                 <th>Duree</th>
                 <th>Titre</th>
             </tr>
@@ -18,14 +18,20 @@ include_once MODELS_INC . 'VersionDAO.class.php';
             foreach($list as $trend){
 
                 echo('<tr>
-                        <th>' . $rang .'</th>
-                        <th><img src="http://t2.gstatic.com/images?q=tbn:ANd9GcQZRIjBf_8WTPwIBb9CEzCnur9SuHiNM0z09nsE78MXdnblRaAAfxBjHgA" alt="play"/></th>
-                        <th>'. $trend->getDuration() . '</th>
-                        <th>' . $trend->getName() . '</th>
+                        <td>' . $rang .'</td>
+                        <td><button>Lire</button></td>
+                        <td>'. $trend->getDuration() . '</td>
+                        <td>' . $trend->getName() . '</td>
                 </tr>');
                 $rang++;
             }
             ?>
+             <tr>
+                    <td>1</td>
+                    <td><button>Lire</button></td>
+                    <td>4:06</td>
+                    <td>Bonjour</td>
+             </tr>
         </table>
     </section>
 </div>
